@@ -1,13 +1,12 @@
-
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-<>
-<h1>Project 3</h1>
-<p>By Love, Graham and Kim</p>
-</>
-    );
+    <div className="App">
+      <h1>FindMe...</h1>
+      
+    </div>
+  );
 }
 
 export default App;

@@ -1,0 +1,19 @@
+- App 
+    - Books COMPONENT
+        - SearchBar (Toggle = Author, Title) COMPONENT
+        - AuthorResults List (Name, Titles, Image) COMPONENT
+            - AuthorItem COMPONENT
+            - AssociatedArticleItem COMPONENT
+        - TitleResults List (Titles) COMPONENT
+            - TitleItem COMPONENT
+            - AssociatedArticleItem COMPONENT
+    - Articles  COMPONENT        
+        - SearchBar Articles (Subject)  COMPONENT
+        - ArticlesResults List (Articles, Videos) COMPONENT
+            - Item COMPONENT
+    - Login/Register COMPONENT
+        - Save Collection
+
+
+
+    
