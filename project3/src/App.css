@@ -43,6 +43,53 @@ nav {
   color: #61dafb;
 }
 
+.search-box{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  
+}
+
+.book-radio{
+  display:flex;
+  flex-direction: row;
+  margin-top: -15px;
+}
+
+.book-radio p {
+  margin-right: 20px;
+}
+
+.search-container{
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 10%
+}
+
+.btn{
+  height: 43.5px;
+  border-radius:0px;
+  margin-left: 5px;
+}
+
+#radio-text1{
+  padding-left: 27px;
+  font-size: 0.8rem;
+}
+
+#radio-text2{
+  padding-left: 27px;
+  font-size: 0.8rem;
+}
+
+#search{
+  border: 1px solid rgb(127, 127, 127);
+  background-color: rgb(127, 127, 127);
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

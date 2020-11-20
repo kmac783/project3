@@ -8,7 +8,8 @@ import VideosState from "./context/videos/VideosState";
 import Collections from "./Collections";
 import Navbar from "./Navbar";
 import Login from "./Login";
-import Search from "./Search";
+import BookSearch from "./BookSearch";
+// import Search from "./Search";
 import "./App.css";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <Router>
             <Navbar />
             <Switch>
-              <Route exact path='/' component={Search} />
+              <Route exact path='/' component={BookSearch} />
               <Route exact path='/collections' component={Collections} />
               <Route exact path='/login' component={Login} />
             </Switch>
