@@ -1,25 +1,50 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import BooksContext from "./context/Books/BooksContext";
-
+import ArticlesContext from "./context/Articles/ArticlesContext";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
   const [radioOption, setRadioOption] = useState("searchTitle");
   const booksContext = useContext(BooksContext);
-  const { title_search, getBooksByTitle } = booksContext;
+  const articlesContext = useContext(ArticlesContext);
+  const {
+    title_search,
+    getBooksByTitle,
+    getBooksByAuthor,
+    author_search,
+  } = booksContext;
+  const {
+    getResearchArticles,
+    getNewsArticles,
+    newsArticles,
+    researchArticles,
+  } = articlesContext;
 
   const onSearchChange = (e) => {
+    e.preventDefault();
     setSearchKeyword(e.target.value);
   };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    getBooksByTitle(searchKeyword);
+
     //If we change anything with this form this value will need to be fixed
 
-    console.log(title_search);
-    console.log(e.target.querySelector("input[name='group1']:checked").value);
-    // console.log(e.target[3].attributes.value.value);
+    let userOption = e.target.querySelector("input[name='group1']:checked")
+      .value;
+    if (inputSwitch === "off") {
+      if (userOption === "searchTitle") {
+        getBooksByTitle(searchKeyword);
+      } else if (userOption === "searchAuthor") {
+        getBooksByAuthor(searchKeyword);
+      }
+    } else {
+      if (userOption === "searchNews") {
+        getNewsArticles(searchKeyword);
+      } else if (userOption === "searchResearch") {
+        getResearchArticles(searchKeyword);
+      }
+    }
   };
 
   const onBookSwitchToggle = (e) => {
