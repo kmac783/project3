@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body{
+background-color: whitesmoke;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -11,6 +15,17 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+img {
+width:75px;
+height:63px;
+margin-left: -10px ;
+
+}
+
+nav {
+  background-color: darkmagenta;
 }
 
 .App-header {
