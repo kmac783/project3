@@ -25,7 +25,7 @@ const ArticlesState = (props) => {
       const res = await axios.get(url);
       dispatch({
         type: GET_NEWS_ARTICLES,
-        payload: res.data,
+        payload: res.data.articles,
       });
     } catch (err) {
       dispatch({ type: ARTICLES_ERROR });

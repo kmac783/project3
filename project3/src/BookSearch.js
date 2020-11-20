@@ -14,8 +14,8 @@ export const BookSearch = () => {
   } = booksContext;
   const {
     getResearchArticles,
-    getNewsArticles,
     newsArticles,
+    getNewsArticles,
     researchArticles,
   } = articlesContext;
 
@@ -26,7 +26,7 @@ export const BookSearch = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
+    //TODO Add Form Validation for Radio Boxes
     //If we change anything with this form this value will need to be fixed
 
     let userOption = e.target.querySelector("input[name='group1']:checked")
@@ -40,6 +40,7 @@ export const BookSearch = () => {
     } else {
       if (userOption === "searchNews") {
         getNewsArticles(searchKeyword);
+        console.log(newsArticles);
       } else if (userOption === "searchResearch") {
         getResearchArticles(searchKeyword);
       }
@@ -48,8 +49,6 @@ export const BookSearch = () => {
 
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
-
-    console.log(e.target.value);
   };
 
   return (
@@ -94,7 +93,7 @@ export const BookSearch = () => {
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
                   name='group1'
                   type='radio'
-                  checked
+                  // checked
                 />
                 <span id='radio-text1'>
                   {inputSwitch === "off"
@@ -110,6 +109,7 @@ export const BookSearch = () => {
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
                   name='group1'
+                  // checked
                   type='radio'
                 />
                 <span id='radio-text2'>
@@ -121,6 +121,16 @@ export const BookSearch = () => {
             </p>
           </div>
         </form>
+      </div>
+      <div>
+        <p>Search Page</p>
+        {newsArticles ? (
+          newsArticles.map((item) => {
+            return <p>{item.title}</p>;
+          })
+        ) : (
+          <p>No Articles</p>
+        )}
       </div>
     </div>
   );
