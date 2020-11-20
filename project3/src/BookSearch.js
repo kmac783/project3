@@ -15,19 +15,22 @@ export const BookSearch = () => {
   } = booksContext;
   const {
     getResearchArticles,
-    getNewsArticles,
     newsArticles,
+    getNewsArticles,
     researchArticles,
   } = articlesContext;
-
+  useEffect(() => {
+    getNewsArticles("bitcoin");
+  });
   const onSearchChange = (e) => {
     e.preventDefault();
     setSearchKeyword(e.target.value);
+    console.log(e.target.value);
   };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
+    //TODO Add Form Validation for Radio Boxes
     //If we change anything with this form this value will need to be fixed
 
     let userOption = e.target.querySelector("input[name='group1']:checked")
@@ -46,6 +49,7 @@ export const BookSearch = () => {
       }
     }
   };
+  console.log(newsArticles);
 
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
@@ -94,6 +98,7 @@ export const BookSearch = () => {
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
                   name="group1"
                   type="radio"
+                  // checked
                 />
                 <span id="radio-text1">
                   {inputSwitch === "off"
@@ -109,7 +114,7 @@ export const BookSearch = () => {
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
                   name="group1"
-                  checked
+                  // checked
                   type="radio"
                 />
                 <span id="radio-text2">
@@ -121,6 +126,15 @@ export const BookSearch = () => {
             </p>
           </div>
         </form>
+      </div>
+      <div>
+        {newsArticles === null && newsArticles.length > 0 ? (
+          <p>No Articles</p>
+        ) : (
+          newsArticles.map((item) => {
+            <p>{item.title}</p>;
+          })
+        )}
       </div>
     </div>
   );
