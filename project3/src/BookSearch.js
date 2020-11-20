@@ -4,7 +4,6 @@ import ArticlesContext from "./context/Articles/ArticlesContext";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [radioOption, setRadioOption] = useState("searchTitle");
   const booksContext = useContext(BooksContext);
   const articlesContext = useContext(ArticlesContext);
   const {
@@ -19,13 +18,10 @@ export const BookSearch = () => {
     getNewsArticles,
     researchArticles,
   } = articlesContext;
-  useEffect(() => {
-    getNewsArticles("bitcoin");
-  });
+
   const onSearchChange = (e) => {
     e.preventDefault();
     setSearchKeyword(e.target.value);
-    console.log(e.target.value);
   };
 
   const onFormSubmit = (e) => {
@@ -44,63 +40,62 @@ export const BookSearch = () => {
     } else {
       if (userOption === "searchNews") {
         getNewsArticles(searchKeyword);
+        console.log(newsArticles);
       } else if (userOption === "searchResearch") {
         getResearchArticles(searchKeyword);
       }
     }
   };
-  console.log(newsArticles);
 
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
-
-    console.log(e.target.value);
   };
+
   return (
-    <div class="container">
-      <div class="search-container">
+    <div class='container'>
+      <div class='search-container'>
         <form
           onSubmit={(e) => {
             onFormSubmit(e);
           }}
         >
-          <div class="switch ">
+          <div class='switch '>
             <label>
               Books
               <input
-                type="checkbox"
+                type='checkbox'
                 value={inputSwitch}
                 onChange={(e) => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span class="lever"></span>
+              <span class='lever'></span>
               Articles
             </label>
           </div>
-          <div class="input-field search-box">
+          <div class='input-field search-box'>
             <input
               value={searchKeyword}
               onChange={(e) => {
                 onSearchChange(e);
               }}
-              id="search"
-              type="search"
+              id='search'
+              type='search'
             />
-            <button type="submit" class="btn small blue">
+            <button type='submit' class='btn small blue'>
               Search
             </button>
           </div>
-          <div class="book-radio">
+          <div class='book-radio'>
             <p>
               <label>
                 <input
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
-                  name="group1"
-                  type="radio"
+                  name='group1'
+                  type='radio'
                   // checked
                 />
-                <span id="radio-text1">
+                <span id='radio-text1'>
                   {inputSwitch === "off"
                     ? "Search by Title"
                     : "Search News Articles"}
@@ -113,11 +108,11 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name="group1"
+                  name='group1'
                   // checked
-                  type="radio"
+                  type='radio'
                 />
-                <span id="radio-text2">
+                <span id='radio-text2'>
                   {inputSwitch === "off"
                     ? "Search by Author"
                     : "Search Research Articles"}
@@ -128,12 +123,13 @@ export const BookSearch = () => {
         </form>
       </div>
       <div>
-        {newsArticles === null && newsArticles.length > 0 ? (
-          <p>No Articles</p>
-        ) : (
+        <p>Search Page</p>
+        {newsArticles ? (
           newsArticles.map((item) => {
-            <p>{item.title}</p>;
+            return <p>{item.title}</p>;
           })
+        ) : (
+          <p>No Articles</p>
         )}
       </div>
     </div>

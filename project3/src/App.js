@@ -9,7 +9,6 @@ import Collections from "./Collections";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import BookSearch from "./BookSearch";
-// import Search from "./Search";
 import "./App.css";
 
 function App() {

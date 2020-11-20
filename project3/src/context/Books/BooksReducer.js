@@ -11,7 +11,7 @@ export default (state, action) => {
     case GET_BOOKS_BY_TITLE:
       return {
         ...state,
-        title_search: [...action.payload],
+        title_search: action.payload,
         loading: false,
       };
 
