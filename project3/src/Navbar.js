@@ -10,7 +10,7 @@ const Navbar = () => {
         </a>
         <ul id='nav-mobile' class='right '>
           <li>
-            <Link to='/collections'> My Collections </Link>
+            <Link to='/collections'> Collections </Link>
           </li>
         </ul>
         <ul id='nav-mobile' class='right '>
