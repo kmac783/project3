@@ -4,11 +4,24 @@ import BooksContext from "./context/Books/BooksContext";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [radioOption, setRadioOption] = useState("searchTitle");
   const booksContext = useContext(BooksContext);
-  const { title_search, getBooksByAuthor } = booksContext;
+  const { title_search, getBooksByTitle } = booksContext;
+
   const onSearchChange = (e) => {
     setSearchKeyword(e.target.value);
   };
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    getBooksByTitle(searchKeyword);
+    //If we change anything with this form this value will need to be fixed
+
+    console.log(title_search);
+    console.log(e.target.querySelector("input[name='group1']:checked").value);
+    // console.log(e.target[3].attributes.value.value);
+  };
+
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
 
@@ -17,7 +30,11 @@ export const BookSearch = () => {
   return (
     <div class="container">
       <div class="search-container">
-        <form>
+        <form
+          onSubmit={(e) => {
+            onFormSubmit(e);
+          }}
+        >
           <div class="switch ">
             <label>
               Books
@@ -41,15 +58,7 @@ export const BookSearch = () => {
               id="search"
               type="search"
             />
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                getBooksByAuthor(searchKeyword);
-                console.log(title_search);
-                console.log(process.env);
-              }}
-              class="btn small blue"
-            >
+            <button type="submit" class="btn small blue">
               Search
             </button>
           </div>
@@ -60,7 +69,6 @@ export const BookSearch = () => {
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
                   name="group1"
                   type="radio"
-                  checked
                 />
                 <span id="radio-text1">
                   {inputSwitch === "off"
@@ -76,6 +84,7 @@ export const BookSearch = () => {
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
                   name="group1"
+                  checked
                   type="radio"
                 />
                 <span id="radio-text2">
