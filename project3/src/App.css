@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-body{
-background-color: whitesmoke;
+body {
+  background-color: whitesmoke;
 }
 
 .App-logo {
@@ -18,10 +18,9 @@ background-color: whitesmoke;
 }
 
 img {
-width:75px;
-height:63px;
-margin-left: -10px ;
-
+  width: 75px;
+  height: 63px;
+  margin-left: -10px;
 }
 
 nav {
@@ -43,16 +42,14 @@ nav {
   color: #61dafb;
 }
 
-.search-box{
-  display:flex;
+.search-box {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-  
 }
 
-.book-radio{
-  display:flex;
+.book-radio {
+  display: flex;
   flex-direction: row;
   margin-top: -15px;
 }
@@ -61,35 +58,46 @@ nav {
   margin-right: 20px;
 }
 
-.search-container{
+.search-container {
   display: flex;
   flex-direction: column;
-  
-  margin-top: 10%
+
+  margin-top: 10%;
 }
 
-.btn{
+.btn {
   height: 43.5px;
-  border-radius:0px;
+  border-radius: 0px;
   margin-left: 5px;
 }
 
-#radio-text1{
+#radio-text1 {
   padding-left: 27px;
   font-size: 0.8rem;
 }
 
-#radio-text2{
+#radio-text2 {
   padding-left: 27px;
   font-size: 0.8rem;
 }
 
-#search{
+#search {
   border: 1px solid rgb(127, 127, 127);
   background-color: rgb(127, 127, 127);
   color: white;
 }
-
+.card-small {
+  background-color: #00beaf;
+  width: 50%;
+}
+.card-image {
+  display: flex;
+  justify-content: flex-end;
+}
+.card-action a {
+  color: black;
+  text-decoration: underline;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

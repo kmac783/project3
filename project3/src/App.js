@@ -20,10 +20,10 @@ function App() {
           <Router>
             <Navbar />
             <Switch>
-              <Route exact path='/' component={BookSearch} />
-              <Route exact path='/collections' component={Collections} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/title-results' component={TitleResults} />
+              <Route exact path="/" component={BookSearch} />
+              <Route exact path="/collections" component={Collections} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/title-results" component={TitleResults} />
             </Switch>
           </Router>
         </ArticlesState>

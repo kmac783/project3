@@ -1,7 +1,8 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import BooksContext from "./context/Books/BooksContext";
 import ArticlesContext from "./context/Articles/ArticlesContext";
-import TitleResults from "./TitleResults"
+// import ArticlesResults from "./Components/ArticlesResults.js";
+import TitleResults from "./TitleResults";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -124,10 +125,29 @@ export const BookSearch = () => {
         </form>
       </div>
       <div>
-        <p>Search Page</p>
+        <p>Search Results</p>
         {newsArticles ? (
           newsArticles.map((item) => {
-            return <p>{item.title}</p>;
+            return (
+              <div class="row">
+                <div class="col s12 m7">
+                  <div class="card-small">
+                    <div class="card-image">
+                      <img src="https://via.placeholder.com/200" />
+                      <span class="card-title"></span>
+                    </div>
+                    <div class="card-content">
+                      <p>{item.title}</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="{item.source.url}">
+                        Link to {item.source.name}{" "}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
           })
         ) : (
           <p>No Articles</p>
