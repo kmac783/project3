@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import BooksContext from "./context/Books/BooksContext";
 import ArticlesContext from "./context/Articles/ArticlesContext";
+import TitleResults from "./TitleResults"
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -52,50 +53,50 @@ export const BookSearch = () => {
   };
 
   return (
-    <div class='container'>
-      <div class='search-container'>
+    <div class="container">
+      <div class="search-container">
         <form
           onSubmit={(e) => {
             onFormSubmit(e);
           }}
         >
-          <div class='switch '>
+          <div class="switch ">
             <label>
               Books
               <input
-                type='checkbox'
+                type="checkbox"
                 value={inputSwitch}
                 onChange={(e) => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span class='lever'></span>
+              <span class="lever"></span>
               Articles
             </label>
           </div>
-          <div class='input-field search-box'>
+          <div class="input-field search-box">
             <input
               value={searchKeyword}
               onChange={(e) => {
                 onSearchChange(e);
               }}
-              id='search'
-              type='search'
+              id="search"
+              type="search"
             />
-            <button type='submit' class='btn small blue'>
+            <button type="submit" class="btn small blue">
               Search
             </button>
           </div>
-          <div class='book-radio'>
+          <div class="book-radio">
             <p>
               <label>
                 <input
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
-                  name='group1'
-                  type='radio'
+                  name="group1"
+                  type="radio"
                   // checked
                 />
-                <span id='radio-text1'>
+                <span id="radio-text1">
                   {inputSwitch === "off"
                     ? "Search by Title"
                     : "Search News Articles"}
@@ -108,11 +109,11 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name='group1'
+                  name="group1"
                   // checked
-                  type='radio'
+                  type="radio"
                 />
-                <span id='radio-text2'>
+                <span id="radio-text2">
                   {inputSwitch === "off"
                     ? "Search by Author"
                     : "Search Research Articles"}
@@ -132,6 +133,48 @@ export const BookSearch = () => {
           <p>No Articles</p>
         )}
       </div>
+
+      {/* <div>
+        <p>Search Page</p>
+        {title_search ? (
+          title_search.map((item) => {
+            console.log(item.best_book);
+            return (
+              //TODO: Should we default to one radio button checked or make an error for if user runs search without a radio button checked?
+              <div>
+                <p>
+                  Title: {item.best_book[0].title}
+                  Author: {item.best_book[0].author[0].name}
+                  <img src={item.best_book[0].image_url} />
+                </p>
+              </div>
+            );
+          })
+        ) : (
+          <p>No Books</p>
+        )}
+      </div> */}
+
+      {/* <div>
+        <p>Search Page</p>
+        {title_search ? (
+          title_search.map((item) => {
+            console.log(item.best_book);
+            return (
+              //TODO: Should we default to one radio button checked or make an error for if user runs search without a radio button checked?
+              <div>
+                <p>
+                  Title: {item.best_book[0].title}
+                  Author: {item.best_book[0].author[0].name}
+                  <img src={item.best_book[0].image_url} />
+                </p>
+              </div>
+            );
+          })
+        ) : (
+          <p>No Books</p>
+        )}
+      </div> */}
     </div>
   );
 };
