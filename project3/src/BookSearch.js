@@ -133,7 +133,7 @@ export const BookSearch = () => {
                 <div class="col s12 m7">
                   <div class="card-small">
                     <div class="card-image">
-                      <img src="https://via.placeholder.com/200" />
+                      <img src="{item.image}" />
                       <span class="card-title"></span>
                     </div>
                     <div class="card-content">
