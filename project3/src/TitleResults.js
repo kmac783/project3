@@ -1,18 +1,23 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import BooksContext from "./context/Books/BooksContext";
-
+import ArticlesContext from "./context/Articles/ArticlesContext";
 
 
 export const TitleResults = () => {
     const booksContext = useContext(BooksContext);
-  
+  const articlesContext = useContext(ArticlesContext);
   const {
     title_search,
     getBooksByTitle,
     getBooksByAuthor,
     author_search,
   } = booksContext;
-
+  const {
+    getResearchArticles,
+    newsArticles,
+    getNewsArticles,
+    researchArticles,
+  } = articlesContext;
   return (
     
     <div>
