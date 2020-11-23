@@ -2,6 +2,7 @@ import {
   GET_NEWS_ARTICLES,
   GET_RESEARCH_ARTICLES,
   ARTICLES_ERROR,
+  SET_SEARCH_TYPE,
 } from "../types";
 
 export default (state, action) => {
@@ -18,6 +19,12 @@ export default (state, action) => {
         ...state,
         researchArticles: action.payload,
         loading: false,
+      };
+
+    case SET_SEARCH_TYPE:
+      return {
+        ...state,
+        searchType: action.payload,
       };
 
     default:

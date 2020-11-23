@@ -21,11 +21,19 @@ body {
   font-family: "Glacial-Indifference", sans-serif;
 }
 
+.news-heading {
+  display: flex;
+  justify-content: space-between;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+
+.space {
+  margin-bottom: 2rem;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -115,6 +123,22 @@ nav {
   color: white;
 }
 
+.all-researchArticles, .news-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.video-articles {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  flex-wrap: wrap;
+}
+.reseach-articlesResult, .news-articles{
+  margin-right: 40px;
+  width:80%
+}
 .test1 {
   background-color: white;
 }

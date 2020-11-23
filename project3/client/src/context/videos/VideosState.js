@@ -21,7 +21,7 @@ const VideosState = (props) => {
 
       dispatch({
         type: GET_VIDEOS,
-        payload: res.data,
+        payload: res.data.items,
       });
 
       // console.log("result", result);

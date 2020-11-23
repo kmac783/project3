@@ -12,7 +12,6 @@ import Collections from "./Collections";
 import Navbar from "./Navbar";
 import BookSearch from "./BookSearch";
 import TitleResults from "./TitleResults";
-import Search from "./Search";
 import Login from "../src/Components/Auth/Login";
 import Register from "../src/Components/Auth/Register";
 import setToken from "./utils/setToken";
@@ -33,7 +32,7 @@ function App() {
               <ArticlesState>
                 <Router>
                   <Navbar />
-                  <div className='container'>
+                  <div className='container-fluid'>
                     <Alerts />
                     <Switch>
                       <Route exact path='/' component={BookSearch} />
@@ -50,7 +49,6 @@ function App() {
                         path='/title-results'
                         component={TitleResults}
                       />
-                      <Route exact path='/search' component={Search} />
                     </Switch>
                   </div>
                 </Router>

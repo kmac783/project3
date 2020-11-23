@@ -2,21 +2,25 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import BooksContext from "./context/Books/BooksContext";
 import ArticlesContext from "./context/Articles/ArticlesContext";
 import AuthContext from "./context/Auth/AuthContext";
+import VideosContext from "./context/videos/VideosContext";
+import Videos from "./Components/Videos/Videos";
 import Spinner from "./Components/Spinner";
 // import ArticlesResults from "./Components/ArticlesResults.js";
 import TitleResults from "./TitleResults";
-import ResearchArticles from "./ResearchArticles";
-import AuthorResults from "./AuthorResults"
-import ArticlesResults from "./Components/ArticlesResults";
+import AuthorResults from "./AuthorResults";
+import Articles from "./Components/Articles/Articles";
+
+import ArticlesResults from "./Components/Articles/newsArticles/NewsArticlesResults";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchLoading, setSearchLoading] = useState(false);
+  const videosContext = useContext(VideosContext);
 
   const booksContext = useContext(BooksContext);
   const authContext = useContext(AuthContext);
   const articlesContext = useContext(ArticlesContext);
-
+  const { videos, getVideos } = videosContext;
   const { isAuthenticated, loadUser } = authContext;
   const {
     title_search,
@@ -29,6 +33,8 @@ export const BookSearch = () => {
     newsArticles,
     getNewsArticles,
     researchArticles,
+    setSearchType,
+    searchType,
   } = articlesContext;
 
   useEffect(() => {
@@ -50,72 +56,80 @@ export const BookSearch = () => {
       .value;
     if (inputSwitch === "off") {
       if (userOption === "searchTitle") {
-        getBooksByTitle(searchKeyword);
+        setSearchType("searchTitle");
+        await getBooksByTitle(searchKeyword);
+        setSearchLoading(false);
       } else if (userOption === "searchAuthor") {
-        getBooksByAuthor(searchKeyword);
+        setSearchType("searchTitle");
+        await getBooksByAuthor(searchKeyword);
+
+        setSearchLoading(false);
       }
     } else {
       if (userOption === "searchNews") {
-        getNewsArticles(searchKeyword);
+        setSearchType("searchNews");
+        await getNewsArticles(searchKeyword);
+        await getVideos(searchKeyword);
         setSearchLoading(false);
-        console.log(newsArticles);
       } else if (userOption === "searchResearch") {
+        setSearchType("searchResearch");
         await getResearchArticles(searchKeyword);
+        await getVideos(searchKeyword);
         setSearchLoading(false);
       }
     }
     //  setSearchLoading(false);
   };
-  console.log(researchArticles);
+  console.log(videos);
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
   };
 
   return (
-    <div className="container">
-      <div className="search-container">
+    <div className='container'>
+      <div className='search-container'>
         <form
           onSubmit={(e) => {
             onFormSubmit(e);
           }}
         >
-          <div className="switch ">
+          <div className='switch '>
             <label>
               Books
               <input
-                type="checkbox"
+                type='checkbox'
                 value={inputSwitch}
                 onChange={(e) => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span className="lever"></span>
+              <span className='lever'></span>
               Articles
             </label>
           </div>
-          <div className="input-field search-box">
+          <div className='input-field search-box'>
             <input
               value={searchKeyword}
               onChange={(e) => {
                 onSearchChange(e);
               }}
-              id="search"
-              type="text"
+              id='search'
+              type='text'
             />
-            <button type="submit" className="btn small blue">
+            <button type='submit' className='btn small blue'>
               Search
             </button>
           </div>
-          <div className="book-radio">
+          <div className='book-radio'>
             <p>
               <label>
                 <input
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
-                  name="group1"
-                  type="radio"
+                  name='group1'
+                  type='radio'
                   // checked
                 />
-                <span id="radio-text1">
+                <span id='radio-text1'>
                   {inputSwitch === "off"
                     ? "Search by Title"
                     : "Search News Articles"}
@@ -128,11 +142,11 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name="group1"
+                  name='group1'
                   // checked
-                  type="radio"
+                  type='radio'
                 />
-                <span id="radio-text2">
+                <span id='radio-text2'>
                   {inputSwitch === "off"
                     ? "Search by Author"
                     : "Search Research Articles"}
@@ -144,15 +158,13 @@ export const BookSearch = () => {
       </div>
       <div>
         {searchLoading && <Spinner />}
-        {!searchLoading && researchArticles && <ResearchArticles type="all" />}
-        {!searchLoading && newsArticles && <ArticlesResults />}
+
+        {/* {!searchLoading && researchArticles && <ResearchArticles type='all' />} */}
+        {!searchLoading && <Articles />}
+        {/* {!searchLoading && videos && <Videos />} */}
       </div>
-<div>
-  {<TitleResults />}
-</div>
-<div>
-  {<AuthorResults />}
-</div>
+      <div>{<TitleResults />}</div>
+      <div>{<AuthorResults />}</div>
       {/* <div>
         <p>Search Page</p>
         {title_search ? (
