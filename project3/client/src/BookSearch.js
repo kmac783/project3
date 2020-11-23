@@ -93,7 +93,7 @@ export const BookSearch = () => {
             onFormSubmit(e);
           }}
         >
-          <div className="switch ">
+          <div className="switch">
             <label>
               Books
               <input
@@ -103,7 +103,7 @@ export const BookSearch = () => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span className="lever"></span>
+              <span className="lever purple lighten-3"></span>
               Articles
             </label>
           </div>
@@ -116,7 +116,7 @@ export const BookSearch = () => {
               id="search"
               type="text"
             />
-            <button type="submit" className="btn small darkmagenta">
+            <button type="submit" className="btn small purple">
               Search
             </button>
           </div>
