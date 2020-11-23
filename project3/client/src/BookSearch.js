@@ -147,7 +147,9 @@ export const BookSearch = () => {
         {!searchLoading && researchArticles && <ResearchArticles type="all" />}
         {!searchLoading && newsArticles && <ArticlesResults />}
       </div>
-
+<div>
+  {<TitleResults />}
+</div>
       {/* <div>
         <p>Search Page</p>
         {title_search ? (
