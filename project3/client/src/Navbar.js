@@ -12,17 +12,21 @@ const Navbar = () => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.username}</li>
       <li>
         <Link to="/">Home</Link>
       </li>
-
-      <li>
-        <Link to="/collections"> My Collections </Link>
-      </li>
+      <li>|</li>
       <li>
         <Link to="/about"> About</Link>
       </li>
+      <li>
+        <i className="material-icons right">collections</i>
+      </li>
+      <li>
+        <Link to="/collections"> My Collections</Link>
+      </li>
+
+      <li>Hello {user && user.username}</li>
       <li>
         <a onClick={onLogout}>
           Logout <i className="material-icons right">arrow_back</i>
@@ -35,13 +39,17 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>|</li>
+      <li>
+        <Link to="/about"> About</Link>
+      </li>
+      <li>
         <Link to="/register"> Register </Link>
       </li>
       <li>
         <Link to="/login"> Login </Link>
-      </li>
-      <li>
-        <Link to="/about"> About</Link>
       </li>
     </Fragment>
   );
@@ -49,10 +57,10 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <a href="/" className="brand-logo">
+        <a href="/" className="brand-logo-left">
           <img src="/download.jpg" />
         </a>
-        <p>Find Me...</p>
+
         <ul id="nav-mobile" className="right ">
           {isAuthenticated ? authLinks : guestLinks}
         </ul>
