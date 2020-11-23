@@ -20,7 +20,9 @@ const Navbar = () => {
       <li>
         <Link to='/collections'> My Collections </Link>
       </li>
-
+      <li>
+        <Link to='/about'> About</Link>
+      </li>
       <li>
         <a onClick={onLogout}>
           Logout <i className='material-icons right'>arrow_back</i>
@@ -37,6 +39,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to='/login'> Login </Link>
+      </li>
+      <li>
+        <Link to='/about'> About</Link>
       </li>
     </Fragment>
   );
