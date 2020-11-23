@@ -3,8 +3,8 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import M from "materialize-css/dist/js/materialize.min.js";
-import AuthContext from "../context/Auth/AuthContext";
-import CollectionsContext from "../context/Collections/CollectionsContext";
+import AuthContext from "../../../context/Auth/AuthContext";
+import CollectionsContext from "../../../context/Collections/CollectionsContext";
 
 export default function SimpleMenu(props) {
   const authContext = useContext(AuthContext);
@@ -32,9 +32,14 @@ export default function SimpleMenu(props) {
     article: props.article,
   };
 
-  const saveToResearchArticles = () => {
+  const saveTo = () => {
     setAnchorEl(null);
-    addResearchArticle(articleToSave);
+    if (props.type === "Research Articles") {
+      addResearchArticle(articleToSave);
+    } else if (props.type === "News Articles") {
+      console.log("saved news");
+    }
+
     if (
       document.querySelectorAll(".btn-floating")[props.id].children[0]
         .innerHTML === "add"
@@ -64,9 +69,8 @@ export default function SimpleMenu(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={saveToResearchArticles}>
-          News Articles Collection
-        </MenuItem>
+        <MenuItem onClick={saveTo}>{`${props.type} Collection`}</MenuItem>
+
         <MenuItem onClick={handleClose}>Create New Collection</MenuItem>
       </Menu>
     </div>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import ArticlesContext from "./context/Articles/ArticlesContext";
-import CollectionsContext from "./context/Collections/CollectionsContext";
-
+import ArticlesContext from "../../../context/Articles/ArticlesContext";
+import CollectionsContext from "../../../context/Collections/CollectionsContext";
+import Videos from "../../Videos/Videos";
 import ResearchItem from "./ResearchItem";
 const ResearchArticles = (props) => {
   const articlesContext = useContext(ArticlesContext);
@@ -51,7 +51,21 @@ const ResearchArticles = (props) => {
     <p>No Saved Articles</p>
   );
 
-  return <div>{props.type === "all" ? displayAll : displaySaved}</div>;
+  return (
+    <div>
+      {props.type === "all" ? (
+        <div class='all-researchArticles'>
+          <div className='reseach-articlesResult'>{displayAll}</div>
+          <div className='relatedVideos'>
+            <h6>Videos related to this search</h6>
+            <Videos />
+          </div>
+        </div>
+      ) : (
+        displaySaved
+      )}
+    </div>
+  );
 };
 
 export default ResearchArticles;

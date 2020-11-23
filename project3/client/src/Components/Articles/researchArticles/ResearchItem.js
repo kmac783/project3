@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { grey } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import CollectionButton from "./Components/CollectionButton";
+import CollectionButton from "./CollectionButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
@@ -58,7 +58,15 @@ const ResearchItem = ({ article, id, type }) => {
           </Avatar>
         }
         action={
-          type === "all" ? <CollectionButton article={article} id={id} /> : ""
+          type === "all" ? (
+            <CollectionButton
+              article={article}
+              id={id}
+              type={"Research Articles"}
+            />
+          ) : (
+            ""
+          )
         }
         title={
           <Typography

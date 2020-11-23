@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 import CollectionsContext from "./context/Collections/CollectionsContext";
-import ResearchArticles from "./ResearchArticles";
+import ResearchArticles from "./Components/Articles/researchArticles/ResearchArticles";
 import Spinner from "./Components/Spinner";
 
 const Collections = () => {
