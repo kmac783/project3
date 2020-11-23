@@ -145,7 +145,7 @@ export const BookSearch = () => {
       <div>
         {searchLoading && <Spinner />}
         {!searchLoading && researchArticles && <ResearchArticles type="all" />}
-        {/* {!searchLoading && newsArticles && <ArticlesResults />} */}
+        {!searchLoading && newsArticles && <ArticlesResults />}
       </div>
 
       {/* <div>
