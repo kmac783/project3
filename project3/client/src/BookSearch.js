@@ -7,6 +7,7 @@ import Spinner from "./Components/Spinner";
 import TitleResults from "./TitleResults";
 import ResearchArticles from "./ResearchArticles";
 
+import ArticlesResults from "./Components/ArticlesResults";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -169,6 +170,7 @@ export const BookSearch = () => {
         )}
         {searchLoading && <Spinner />}
         {!searchLoading && researchArticles && <ResearchArticles type='all' />}
+        <ArticlesResults />
       </div>
 
       {/* <div>
