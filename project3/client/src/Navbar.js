@@ -14,19 +14,19 @@ const Navbar = () => {
     <Fragment>
       <li>Hello {user && user.username}</li>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
 
       <li>
-        <Link to='/collections'> My Collections </Link>
+        <Link to="/collections"> My Collections </Link>
       </li>
       <li>
-        <Link to='/about'> About</Link>
+        <Link to="/about"> About</Link>
       </li>
       <li>
         <a onClick={onLogout}>
-          Logout <i className='material-icons right'>arrow_back</i>
-          <span className='hide'>Logout</span>
+          Logout <i className="material-icons right">arrow_back</i>
+          <span className="hide">Logout</span>
         </a>
       </li>
     </Fragment>
@@ -35,25 +35,25 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/register'> Register </Link>
+        <Link to="/register"> Register </Link>
       </li>
       <li>
-        <Link to='/login'> Login </Link>
+        <Link to="/login"> Login </Link>
       </li>
       <li>
-        <Link to='/about'> About</Link>
+        <Link to="/about"> About</Link>
       </li>
     </Fragment>
   );
 
   return (
     <nav>
-      <div className='nav-wrapper'>
-        <a href='#' className='brand-logo left'>
-          <img src='https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fdocument-export.canva.com%2F61wrM%2FDAEN_O61wrM%2F1%2Fpreview%2FaQJ4bVYh7G3Zg7Ky8scQZw-0001-13344360149.png' />
+      <div className="nav-wrapper">
+        <a href="/" className="brand-logo">
+          <img src="/download.jpg" />
         </a>
-
-        <ul id='nav-mobile' className='right '>
+        <p>Find Me...</p>
+        <ul id="nav-mobile" className="right ">
           {isAuthenticated ? authLinks : guestLinks}
         </ul>
       </div>
