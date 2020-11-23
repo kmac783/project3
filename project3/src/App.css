@@ -86,18 +86,7 @@ nav {
   background-color: rgb(127, 127, 127);
   color: white;
 }
-.card-small {
-  background-color: #00beaf;
-  width: 50%;
-}
-.card-image {
-  display: flex;
-  justify-content: flex-end;
-}
-.card-action a {
-  color: black;
-  text-decoration: underline;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
