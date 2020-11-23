@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import Login from "./Login";
 import BookSearch from "./BookSearch";
 import TitleResults from "./TitleResults";
+import About from "./About";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route exact path="/collections" component={Collections} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/title-results" component={TitleResults} />
+              <Route exact path="/about" component={About}/>
             </Switch>
           </Router>
         </ArticlesState>
