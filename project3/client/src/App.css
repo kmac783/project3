@@ -82,7 +82,7 @@ nav {
   justify-content: space-between;
 }
 .switch label .lever:after {
-  background-color: purple;
+  background-color: #9c27b0;
 }
 .book-radio {
   display: flex;
@@ -113,8 +113,8 @@ nav {
   font-size: 0.8rem;
 }
 #radio-text1:after {
-  background-color: purple;
-  border: 2px solid purple;
+  background-color: #9c27b0;
+  border: 2px solid #9c27b0;
 }
 
 #radio-text2 {
@@ -122,8 +122,8 @@ nav {
   font-size: 0.8rem;
 }
 #radio-text2:after {
-  background-color: purple;
-  border: 2px solid purple;
+  background-color: #9c27b0;
+  border: 2px solid #9c27b0;
 }
 
 #search {
