@@ -57,6 +57,7 @@ export const BookSearch = () => {
     } else {
       if (userOption === "searchNews") {
         getNewsArticles(searchKeyword);
+        setSearchLoading(false);
         console.log(newsArticles);
       } else if (userOption === "searchResearch") {
         await getResearchArticles(searchKeyword);
@@ -170,7 +171,7 @@ export const BookSearch = () => {
         )}
         {searchLoading && <Spinner />}
         {!searchLoading && researchArticles && <ResearchArticles type='all' />}
-        <ArticlesResults />
+        {!searchLoading && newsArticles && <ArticlesResults />}
       </div>
 
       {/* <div>

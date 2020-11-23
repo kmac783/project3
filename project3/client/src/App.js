@@ -17,6 +17,7 @@ import Login from "../src/Components/Auth/Login";
 import Register from "../src/Components/Auth/Register";
 import setToken from "./utils/setToken";
 import Alerts from "./Components/Alerts/alerts";
+import About from "./Components/About";
 import "./App.css";
 
 if (localStorage.token) {
@@ -43,6 +44,7 @@ function App() {
                       />
                       <Route exact path='/login' component={Login} />
                       <Route exact path='/register' component={Register} />
+                      <Route exact path='/about' component={About} />
                       <Route
                         exact
                         path='/title-results'
