@@ -1,0 +1,64 @@
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css/dist/js/materialize.min.js";
+import BooksState from "./context/Books/BooksState";
+import ArticlesState from "./context/Articles/ArticlesState";
+import AuthState from "./context/Auth/AuthState";
+import AlertState from "./context/Alert/AlertState";
+import CollectionsState from "./context/Collections/CollectionsState";
+import VideosState from "./context/videos/VideosState";
+import Collections from "./Collections";
+import Navbar from "./Navbar";
+import BookSearch from "./BookSearch";
+import TitleResults from "./TitleResults";
+import Search from "./Search";
+import Login from "../src/Components/Auth/Login";
+import Register from "../src/Components/Auth/Register";
+import setToken from "./utils/setToken";
+import Alerts from "./Components/Alerts/alerts";
+import "./App.css";
+
+if (localStorage.token) {
+  setToken(localStorage.token);
+}
+function App() {
+  return (
+    <AuthState>
+      <CollectionsState>
+        <AlertState>
+          <VideosState>
+            <BooksState>
+              <ArticlesState>
+                <Router>
+                  <Navbar />
+                  <div className='container'>
+                    <Alerts />
+                    <Switch>
+                      <Route exact path='/' component={BookSearch} />
+                      <Route
+                        exact
+                        path='/collections'
+                        component={Collections}
+                      />
+                      <Route exact path='/login' component={Login} />
+                      <Route exact path='/register' component={Register} />
+                      <Route
+                        exact
+                        path='/title-results'
+                        component={TitleResults}
+                      />
+                      <Route exact path='/search' component={Search} />
+                    </Switch>
+                  </div>
+                </Router>
+              </ArticlesState>
+            </BooksState>
+          </VideosState>
+        </AlertState>
+      </CollectionsState>
+    </AuthState>
+  );
+}
+
+export default App;
