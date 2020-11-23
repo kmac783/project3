@@ -6,7 +6,7 @@ import Spinner from "./Components/Spinner";
 // import ArticlesResults from "./Components/ArticlesResults.js";
 import TitleResults from "./TitleResults";
 import ResearchArticles from "./ResearchArticles";
-
+import AuthorResults from "./AuthorResults"
 import ArticlesResults from "./Components/ArticlesResults";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
@@ -149,6 +149,9 @@ export const BookSearch = () => {
       </div>
 <div>
   {<TitleResults />}
+</div>
+<div>
+  {<AuthorResults />}
 </div>
       {/* <div>
         <p>Search Page</p>
