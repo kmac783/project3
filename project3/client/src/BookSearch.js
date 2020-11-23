@@ -72,50 +72,50 @@ export const BookSearch = () => {
   };
 
   return (
-    <div className='container'>
-      <div className='search-container'>
+    <div className="container">
+      <div className="search-container">
         <form
           onSubmit={(e) => {
             onFormSubmit(e);
           }}
         >
-          <div className='switch '>
+          <div className="switch ">
             <label>
               Books
               <input
-                type='checkbox'
+                type="checkbox"
                 value={inputSwitch}
                 onChange={(e) => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span className='lever'></span>
+              <span className="lever"></span>
               Articles
             </label>
           </div>
-          <div className='input-field search-box'>
+          <div className="input-field search-box">
             <input
               value={searchKeyword}
               onChange={(e) => {
                 onSearchChange(e);
               }}
-              id='search'
-              type='text'
+              id="search"
+              type="text"
             />
-            <button type='submit' className='btn small blue'>
+            <button type="submit" className="btn small blue">
               Search
             </button>
           </div>
-          <div className='book-radio'>
+          <div className="book-radio">
             <p>
               <label>
                 <input
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
-                  name='group1'
-                  type='radio'
+                  name="group1"
+                  type="radio"
                   // checked
                 />
-                <span id='radio-text1'>
+                <span id="radio-text1">
                   {inputSwitch === "off"
                     ? "Search by Title"
                     : "Search News Articles"}
@@ -128,11 +128,11 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name='group1'
+                  name="group1"
                   // checked
-                  type='radio'
+                  type="radio"
                 />
-                <span id='radio-text2'>
+                <span id="radio-text2">
                   {inputSwitch === "off"
                     ? "Search by Author"
                     : "Search Research Articles"}
@@ -143,35 +143,9 @@ export const BookSearch = () => {
         </form>
       </div>
       <div>
-        {newsArticles ? (
-          newsArticles.map((item, index) => {
-            return (
-              <div className='row' id={index}>
-                <div className='col s12 m7'>
-                  <div className='card-small'>
-                    <div className='card-image'>
-                      <img src='{item.image}' />
-                      <span className='card-title'></span>
-                    </div>
-                    <div className='card-content'>
-                      <p>{item.title}</p>
-                    </div>
-                    <div className='card-action'>
-                      <a href='{item.source.url}'>
-                        Link to {item.source.name}{" "}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <p>No Articles</p>
-        )}
         {searchLoading && <Spinner />}
-        {!searchLoading && researchArticles && <ResearchArticles type='all' />}
-        {!searchLoading && newsArticles && <ArticlesResults />}
+        {!searchLoading && researchArticles && <ResearchArticles type="all" />}
+        {/* {!searchLoading && newsArticles && <ArticlesResults />} */}
       </div>
 
       {/* <div>
