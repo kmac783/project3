@@ -1,9 +1,24 @@
+@font-face {
+  font-family: "Glacial-Indifference";
+  src: local("Glacial-Indifference"),
+    url(./fonts/glacial-indifference/GlacialIndifference-Bold.otf)
+      format("opentype");
+  src: local("Glacial-Indifference"),
+    url(./fonts/glacial-indifference/GlacialIndifference-Italic.otf)
+      format("opentype");
+
+  src: local("Glacial-Indifference"),
+    url(./fonts/glacial-indifference/GlacialIndifference-Regular.otf)
+      format("opentype");
+}
+
 .App {
   text-align: center;
 }
 
 body {
   background-color: whitesmoke;
+  font-family: "Glacial-Indifference", sans-serif;
 }
 
 .App-logo {
@@ -20,15 +35,23 @@ body {
 img {
   width: 75px;
   height: 63px;
-  margin-left: -10px;
 }
 
 nav {
-  background-color: darkmagenta;
+  background-color: #8b008b;
 }
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
+}
+.logo {
+  display: flex;
+}
+.logo-text {
+  font-size: 30px;
+  display: inline-flex;
+  margin-left: 10px;
+  vertical-align: text-bottom;
 }
 
 .App-header {
@@ -73,6 +96,7 @@ nav {
   height: 43.5px;
   border-radius: 0px;
   margin-left: 5px;
+  font-family: "Glacial-Indifference", sans-serif;
 }
 
 #radio-text1 {
@@ -119,10 +143,6 @@ nav {
   flex-direction: column;
 }
 
-.card-small {
-  background-color: #00beaf;
-  width: 50%;
-}
 .card-image {
   display: flex;
   justify-content: flex-end;

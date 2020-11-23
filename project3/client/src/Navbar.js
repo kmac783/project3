@@ -57,9 +57,12 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <a href="/" className="brand-logo-left">
-          <img src="/download.jpg" />
-        </a>
+        <div class="logo">
+          <a href="/" className="brand-logo-left">
+            <img src="/download.jpg" />
+            <div class="logo-text">FIND ME...</div>
+          </a>
+        </div>
 
         <ul id="nav-mobile" className="right ">
           {isAuthenticated ? authLinks : guestLinks}
