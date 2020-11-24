@@ -38,6 +38,8 @@ export default function SimpleMenu(props) {
       addResearchArticle(articleToSave);
     } else if (props.type === "News Articles") {
       console.log("saved news");
+    } else if (props.type === "Books") {
+      console.log("saved books");
     }
 
     if (

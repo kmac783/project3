@@ -19,7 +19,7 @@ function ArticlesResults() {
         </div>
         <div class='video-articles'>
           <h6>Videos related to this search</h6>
-          <Videos />
+          {newsArticles && <Videos />}
         </div>
       </div>
     </div>

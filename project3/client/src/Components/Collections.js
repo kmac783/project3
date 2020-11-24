@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
-import CollectionsContext from "./context/Collections/CollectionsContext";
-import ResearchArticles from "./Components/Articles/researchArticles/ResearchArticles";
-import Spinner from "./Components/Spinner";
+import CollectionsContext from "../context/Collections/CollectionsContext";
+import ResearchArticles from "./Articles/researchArticles/ResearchArticles";
+import Spinner from "../Components/Spinner";
 
 const Collections = () => {
   const collectionsContext = useContext(CollectionsContext);
@@ -25,22 +25,19 @@ const Collections = () => {
   return (
     <div>
       <h5>My Collection</h5>
-      <div className='row'>
+      <div className='row container'>
         <div className='col s12'>
           <ul className='tabs  blue-grey lighten-4 z-depth-3'>
             <li className='tab col s3'>
-              <a href='#test1'>Books</a>
-            </li>
-            <li className='tab col s3'>
-              <a className='active' href='#test2'>
-                News Articles
+              <a href='#test1' className='active'>
+                Books
               </a>
             </li>
             <li className='tab col s3'>
-              <a href='#test3'>Research Articles</a>
+              <a href='#test2'>News Articles</a>
             </li>
             <li className='tab col s3'>
-              <a href='#test4'>Videos</a>
+              <a href='#test3'>Research Articles</a>
             </li>
           </ul>
         </div>
@@ -55,9 +52,6 @@ const Collections = () => {
           {!loading && savedResearchArticles && (
             <ResearchArticles type='saved' />
           )}
-        </div>
-        <div id='test4' className='col s12'>
-          Saved Videos
         </div>
       </div>
     </div>

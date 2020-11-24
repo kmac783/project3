@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   cover: {
-    width: 200,
+    width: 250,
   },
   controls: {
     display: "flex",
@@ -65,7 +65,10 @@ export default function MediaControlCard({ item, id }) {
           <div class='space'></div>
           <div>
             <Typography variant='subtitle2' color='textSecondary'>
-              Details: {item.description} <a href={item.url}>Read Article</a>
+              Details: {item.description}{" "}
+              <a href='#' onClick={() => window.open(item.url)}>
+                Read Article
+              </a>
             </Typography>
           </div>
         </CardContent>
