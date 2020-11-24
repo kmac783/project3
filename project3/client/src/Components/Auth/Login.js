@@ -42,30 +42,30 @@ const Login = (props) => {
   };
   return (
     <div>
-      <div className='container'>
-        <h2 className='center-align'>Login</h2>
+      <div className="container">
+        <h2 className="center-align">Login</h2>
         <form
           onSubmit={(e) => {
             onSubmitForm(e);
           }}
         >
           {" "}
-          <div className='input-field' id='login-container'>
-            <div className='div-center'>
+          <div className="input-field" id="login-container">
+            <div className="div-center">
               {" "}
               <input
-                id='login'
-                name='username'
-                type='text'
+                id="login"
+                name="username"
+                type="text"
                 value={username}
                 onChange={(e) => {
                   onChange(e);
                 }}
               />
               <input
-                id='login'
-                name='password'
-                type='text'
+                id="login"
+                name="password"
+                type="text"
                 value={password}
                 onChange={(e) => {
                   onChange(e);
@@ -74,11 +74,11 @@ const Login = (props) => {
             </div>
 
             <button
-              type='submit'
-              className='btn small blue waves-effect waves-light'
+              type="submit"
+              className="btn small purple waves-effect waves-light"
             >
               Submit
-              <i className='material-icons right'>send</i>
+              <i className="material-icons right">send</i>
             </button>
           </div>
         </form>
