@@ -31,18 +31,18 @@ function App() {
               <ArticlesState>
                 <Router>
                   <Navbar />
-                  <div className='container-fluid'>
+                  <div className="container-fluid">
                     <Alerts />
                     <Switch>
-                      <Route exact path='/' component={BookSearch} />
+                      <Route exact path="/" component={BookSearch} />
                       <Route
                         exact
-                        path='/collections'
+                        path="/collections"
                         component={Collections}
                       />
-                      <Route exact path='/login' component={Login} />
-                      <Route exact path='/register' component={Register} />
-                      <Route exact path='/about' component={About} />
+                      <Route exact path="/login" component={Login} />
+                      <Route exact path="/register" component={Register} />
+                      <Route exact path="/about" component={About} />
                     </Switch>
                   </div>
                 </Router>

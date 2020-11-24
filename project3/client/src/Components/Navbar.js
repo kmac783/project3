@@ -13,24 +13,24 @@ const Navbar = () => {
   const authLinks = (
     <Fragment>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>|</li>
       <li>
-        <Link to='/about'> About</Link>
+        <Link to="/about"> About</Link>
       </li>
       <li>
-        <i className='material-icons right'>collections</i>
+        <i className="material-icons right">collections</i>
       </li>
       <li>
-        <Link to='/collections'> My Collections</Link>
+        <Link to="/collections"> My Collections</Link>
       </li>
 
       <li>Hello {user && user.username}</li>
       <li>
         <a onClick={onLogout}>
-          Logout <i className='material-icons right'>arrow_back</i>
-          <span className='hide'>Logout</span>
+          Logout <i className="material-icons right">arrow_back</i>
+          <span className="hide">Logout</span>
         </a>
       </li>
     </Fragment>
@@ -39,32 +39,32 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>|</li>
       <li>
-        <Link to='/about'> About</Link>
+        <Link to="/about"> About</Link>
       </li>
       <li>
-        <Link to='/register'> Register </Link>
+        <Link to="/register"> Register </Link>
       </li>
       <li>
-        <Link to='/login'> Login </Link>
+        <Link to="/login"> Login </Link>
       </li>
     </Fragment>
   );
 
   return (
     <nav>
-      <div className='nav-wrapper'>
-        <div class='logo'>
-          <a href='/' className='brand-logo-left'>
-            <img src='/download.jpg' />
-            <div class='logo-text'>FIND ME...</div>
+      <div className="nav-wrapper">
+        <div class="logo">
+          <a href="/" className="brand-logo-left">
+            <img src="/download.png" />
+            <div class="logo-text">FIND ME...</div>
           </a>
         </div>
 
-        <ul id='nav-mobile' className='right '>
+        <ul id="nav-mobile" className="right ">
           {isAuthenticated ? authLinks : guestLinks}
         </ul>
       </div>

@@ -6,17 +6,20 @@ import VideosContext from "../context/videos/VideosContext";
 import Spinner from "./Spinner";
 import Articles from "./Articles/Articles";
 import Books from "./Books/Books";
+import AlertContext from "../context/Alert/AlertContext";
 
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchLoading, setSearchLoading] = useState(false);
   const videosContext = useContext(VideosContext);
+  const alertContext = useContext(AlertContext);
 
   const booksContext = useContext(BooksContext);
   const authContext = useContext(AuthContext);
   const articlesContext = useContext(ArticlesContext);
   const { videos, getVideos } = videosContext;
+  const { setAlert } = alertContext;
   const { isAuthenticated, loadUser } = authContext;
   const {
     title_search,
@@ -43,42 +46,52 @@ export const BookSearch = () => {
   };
 
   const onFormSubmit = async (e) => {
-    setSearchLoading(true);
     e.preventDefault();
     //TODO Add Form Validation for Radio Boxes
     //If we change anything with this form this value will need to be fixed
-
-    let userOption = e.target.querySelector("input[name='group1']:checked")
-      .value;
-    if (inputSwitch === "off") {
-      if (userOption === "searchTitle") {
-        setSearchType("searchTitle");
-        await getBooksByTitle(searchKeyword);
-        setSearchLoading(false);
-      } else if (userOption === "searchAuthor") {
-        setSearchType("searchAuthor");
-        await getBooksByAuthor(searchKeyword);
-        setSearchLoading(false);
-      }
+    let radioButton1isChecked = e.target.querySelector("input[name='group1']")
+      .checked;
+    let radioButton2isChecked = e.target.querySelector("input[name='group2']")
+      .checked;
+    if (!radioButton1isChecked && !radioButton2isChecked) {
+      setAlert("Please Choose a Search By", "danger", 3000);
     } else {
-      if (userOption === "searchNews") {
-        setSearchType("searchNews");
-        await getNewsArticles(searchKeyword);
-        await getVideos(searchKeyword);
-        setSearchLoading(false);
-      } else if (userOption === "searchResearch") {
-        setSearchType("searchResearch");
-        await getResearchArticles(searchKeyword);
-        await getVideos(searchKeyword);
-        setSearchLoading(false);
+      setSearchLoading(true);
+      let userOption = e.target.querySelector("input[name='group1']:checked")
+        .value;
+
+      if (inputSwitch === "off") {
+        if (userOption === "searchTitle") {
+          setSearchType("searchTitle");
+          await getBooksByTitle(searchKeyword);
+          setSearchLoading(false);
+        } else if (userOption === "searchAuthor") {
+          setSearchType("searchAuthor");
+          await getBooksByAuthor(searchKeyword);
+          setSearchLoading(false);
+        }
+      } else {
+        if (userOption === "searchNews") {
+          setSearchType("searchNews");
+          await getNewsArticles(searchKeyword);
+          await getVideos(searchKeyword);
+          setSearchLoading(false);
+        } else if (userOption === "searchResearch") {
+          setSearchType("searchResearch");
+          await getResearchArticles(searchKeyword);
+          await getVideos(searchKeyword);
+          setSearchLoading(false);
+        }
       }
     }
+
     //  setSearchLoading(false);
   };
   console.log(videos);
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
   };
+  //if both radio buttons are not checked then we cannot submit the form
 
   return (
     <div className="container">
@@ -110,6 +123,7 @@ export const BookSearch = () => {
               }}
               id="search"
               type="text"
+              required
             />
             <button type="submit" className="btn small purple">
               Search
@@ -137,7 +151,7 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name="group1"
+                  name="group2"
                   // checked
                   type="radio"
                 />

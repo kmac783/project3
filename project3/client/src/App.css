@@ -84,6 +84,10 @@ nav {
 .switch label .lever:after {
   background-color: #9c27b0;
 }
+.switch label input[type="checkbox"]:checked + .lever:after {
+  background-color: #9c27b0;
+}
+
 .book-radio {
   display: flex;
   flex-direction: row;
@@ -131,7 +135,7 @@ nav {
   background-color: rgb(127, 127, 127);
   color: white;
 }
-.inner-research{
+.inner-research {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -153,24 +157,25 @@ nav {
 }
 .ratings {
   display: flex;
-  margin-left:-15px
+  margin-left: -15px;
 }
 
 .books-div {
   width: 90%;
 }
 #open:focus {
-background-color: transparent;
+  background-color: transparent;
 }
 #img-book {
   background-size: contain;
   background-position: left;
 }
 
-#book-details{
+#book-details {
   word-break: break-all;
 }
-.reseach-articlesResult, .news-articles{
+.reseach-articlesResult,
+.news-articles {
   margin-right: 40px;
   width: 80%;
 }
