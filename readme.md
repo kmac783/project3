@@ -4,7 +4,7 @@
 
 Find Me is a platform for collecting news & research articles, books, and videos. People use Find Me to discover content, build collections, and grow their knowledge.
 
-![Application Screenshot](project3/client/public/Project3Screenshot.png)
+![Application Screenshot](/project3/original-project/project3/client/public/Project3Screenshot.png)
 
 ## Table of Contents
 
