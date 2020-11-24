@@ -25,7 +25,7 @@ Find Me is a platform for collecting news & research articles, books, and videos
 ## Project
 
 - [Github Repo](https://github.com/kmac783/project3)
-- [Production App](<heroku url>)
+- [Production App](https://radiant-bastion-34806.herokuapp.com/)
 
 ## Wireframes
 
