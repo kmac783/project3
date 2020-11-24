@@ -8,10 +8,9 @@ import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/Alert/AlertState";
 import CollectionsState from "./context/Collections/CollectionsState";
 import VideosState from "./context/videos/VideosState";
-import Collections from "./Collections";
-import Navbar from "./Navbar";
-import BookSearch from "./BookSearch";
-import TitleResults from "./TitleResults";
+import Collections from "./Components/Collections";
+import Navbar from "./Components/Navbar";
+import BookSearch from "./Components/BookSearch";
 import Login from "../src/Components/Auth/Login";
 import Register from "../src/Components/Auth/Register";
 import setToken from "./utils/setToken";
@@ -44,11 +43,6 @@ function App() {
                       <Route exact path='/login' component={Login} />
                       <Route exact path='/register' component={Register} />
                       <Route exact path='/about' component={About} />
-                      <Route
-                        exact
-                        path='/title-results'
-                        component={TitleResults}
-                      />
                     </Switch>
                   </div>
                 </Router>

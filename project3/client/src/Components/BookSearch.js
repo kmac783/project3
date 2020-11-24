@@ -1,16 +1,12 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import BooksContext from "./context/Books/BooksContext";
-import ArticlesContext from "./context/Articles/ArticlesContext";
-import AuthContext from "./context/Auth/AuthContext";
-import VideosContext from "./context/videos/VideosContext";
-import Videos from "./Components/Videos/Videos";
-import Spinner from "./Components/Spinner";
-// import ArticlesResults from "./Components/ArticlesResults.js";
-import TitleResults from "./TitleResults";
-import AuthorResults from "./AuthorResults";
-import Articles from "./Components/Articles/Articles";
+import BooksContext from "../context/Books/BooksContext";
+import ArticlesContext from "../context/Articles/ArticlesContext";
+import AuthContext from "../context/Auth/AuthContext";
+import VideosContext from "../context/videos/VideosContext";
+import Spinner from "./Spinner";
+import Articles from "./Articles/Articles";
+import Books from "./Books/Books";
 
-import ArticlesResults from "./Components/Articles/newsArticles/NewsArticlesResults";
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -60,9 +56,8 @@ export const BookSearch = () => {
         await getBooksByTitle(searchKeyword);
         setSearchLoading(false);
       } else if (userOption === "searchAuthor") {
-        setSearchType("searchTitle");
+        setSearchType("searchAuthor");
         await getBooksByAuthor(searchKeyword);
-
         setSearchLoading(false);
       }
     } else {
@@ -162,9 +157,10 @@ export const BookSearch = () => {
         {/* {!searchLoading && researchArticles && <ResearchArticles type='all' />} */}
         {!searchLoading && <Articles />}
         {/* {!searchLoading && videos && <Videos />} */}
+        {!searchLoading && <Books />}
       </div>
-      <div>{<TitleResults />}</div>
-      <div>{<AuthorResults />}</div>
+      {/* <div>{<TitleResults />}</div>
+      <div>{<AuthorResults />}</div> */}
       {/* <div>
         <p>Search Page</p>
         {title_search ? (

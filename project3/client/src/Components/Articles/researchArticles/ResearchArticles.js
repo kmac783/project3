@@ -58,7 +58,7 @@ const ResearchArticles = (props) => {
           <div className='reseach-articlesResult'>{displayAll}</div>
           <div className='relatedVideos'>
             <h6>Videos related to this search</h6>
-            <Videos />
+            {researchArticles && <Videos />}
           </div>
         </div>
       ) : (

@@ -122,6 +122,12 @@ nav {
   background-color: rgb(127, 127, 127);
   color: white;
 }
+.inner-research{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
 
 .all-researchArticles, .news-container {
   display: flex;
@@ -134,6 +140,25 @@ nav {
   flex-direction: column;
   width: 20%;
   flex-wrap: wrap;
+}
+.ratings {
+  display: flex;
+  margin-left:-15px
+}
+
+.books-div {
+  width: 90%;
+}
+#open:focus {
+background-color: transparent;
+}
+#img-book {
+  background-size: contain;
+  background-position: left;
+}
+
+#book-details{
+  word-break: break-all;
 }
 .reseach-articlesResult, .news-articles{
   margin-right: 40px;

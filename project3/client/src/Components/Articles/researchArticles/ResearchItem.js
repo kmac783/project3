@@ -93,16 +93,33 @@ const ResearchItem = ({ article, id, type }) => {
       /> */}
 
       <CardContent>
-        <Typography variant='subtitle2' color='primary' component='strong'>
-          Authors:{" "}
-          {article.authors.map((author, index) => {
-            return <span id={index}>{author}</span>;
-          })}
-        </Typography>
+        <div className='inner-research'>
+          <div>
+            <Typography
+              variant='subtitle2'
+              color='textPrimary'
+              component='strong'
+            >
+              Authors:{" "}
+              {article.authors.map((author, index) => {
+                return <span id={index}>{author}</span>;
+              })}{" "}
+            </Typography>
+          </div>
+          <div>
+            <Typography variant='subtitle2' color='textPrimary'>
+              Publisher: {article.publisher && <span>{article.publisher}</span>}
+            </Typography>
+          </div>
+          <div>
+            <Typography variant='subtitle2' color='textPrimary'>
+              Year: {article.year && <span>{article.year}</span>}
+            </Typography>
+          </div>
+        </div>
+
         <Typography variant='body2' color='textSecondary' component='p'>
-          {description[0]}
-          {description[1]}
-          {description[2]}
+          {`${!expanded ? "Show" : "Hide"}`} Summary
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -110,6 +127,7 @@ const ResearchItem = ({ article, id, type }) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label='show more'
+            id='open'
           >
             <ExpandMoreIcon />
           </IconButton>
@@ -119,10 +137,32 @@ const ResearchItem = ({ article, id, type }) => {
       <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Typography variant='body2' color='textSecondary' component='p'>
-            {descriptionHidden.map((items, index) => {
+            {description.map((items, index) => {
               return <span id={index}>{items}</span>;
             })}
           </Typography>
+          <div>
+            <div className='space'></div>
+            <Typography variant='subtitle2' color='textPrimary'>
+              {article.fulltextIdentifier ? (
+                <a
+                  href='#'
+                  onClick={() => window.open(article.fulltextIdentifier)}
+                >
+                  Download Article File (PDF)
+                </a>
+              ) : (
+                <a
+                  href='#'
+                  onClick={() =>
+                    window.open(`https://core.ac.uk/display/${article.id}`)
+                  }
+                >
+                  View Article
+                </a>
+              )}
+            </Typography>
+          </div>
         </CardContent>
       </Collapse>
     </Card>
