@@ -96,6 +96,7 @@ export default function MediaControlCard({ item, id }) {
     items: item,
   };
   dataItem.items.details = details;
+
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -121,7 +122,11 @@ export default function MediaControlCard({ item, id }) {
               </div>
               <div>
                 {" "}
-                <CollectionButton type={"Books"} article={dataItem} id={id} />
+                <CollectionButton
+                  type={"Books"}
+                  book={dataItem.items}
+                  id={id}
+                />
               </div>
             </div>
           </Typography>

@@ -6,9 +6,10 @@
   "scripts": {
     "test": "npm run test",
     "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "clientinstall": "npm install --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client-view",
+    "clientinstall": "npm install --prefix client-view",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client-view && npm run build --prefix client-view"
   },
   "keywords": [],
   "author": "",

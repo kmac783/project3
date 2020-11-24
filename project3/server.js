@@ -1,15 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const db = mongoose.connection;
-
+const config = require("config");
+const dbURI = config.get("mongoURI");
 const app = express();
+const path = require("path");
 
 //Connect Database
 
-const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/" + "Project3-Love";
 // Connect to Mongo
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -17,7 +17,7 @@ mongoose.connect(MONGODB_URI, {
 });
 // Error / success
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
-db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
+db.on("connected", () => console.log("mongo connected: ", dbURI));
 db.on("disconnected", () => console.log("mongo disconnected"));
 // open the connection to mongo
 db.on("open", () => {});
@@ -34,13 +34,19 @@ app.use(
   "/api/research",
   require("./routes/collections/ResearchCollectionsController")
 );
+app.use("/api/news", require("./routes/collections/NewsCollectionsController"));
+app.use(
+  "/api/books",
+  require("./routes/collections/BookCollectionsController")
+);
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client-view/build'));
-//   app.get('*', (req, res) =>
-//     res.sendFile(path.resolve(__dirname, 'client-view', 'build', 'index.html'))
-//   );
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client-view/build"));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client-view", "build", "index.html"))
+  );
+}
+
 const PORT = process.env.PORT || 5002;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

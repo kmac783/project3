@@ -49,9 +49,9 @@ export const BookSearch = () => {
     e.preventDefault();
     //TODO Add Form Validation for Radio Boxes
     //If we change anything with this form this value will need to be fixed
-    let radioButton1isChecked = e.target.querySelector("input[name='group1']")
+    let radioButton1isChecked = e.target.querySelector("input[id='group1']")
       .checked;
-    let radioButton2isChecked = e.target.querySelector("input[name='group2']")
+    let radioButton2isChecked = e.target.querySelector("input[id='group2']")
       .checked;
     if (!radioButton1isChecked && !radioButton2isChecked) {
       setAlert("Please Choose a Search By", "danger", 3000);
@@ -94,51 +94,52 @@ export const BookSearch = () => {
   //if both radio buttons are not checked then we cannot submit the form
 
   return (
-    <div className="container">
-      <div className="search-container">
+    <div className='container'>
+      <div className='search-container'>
         <form
           onSubmit={(e) => {
             onFormSubmit(e);
           }}
         >
-          <div className="switch">
+          <div className='switch'>
             <label>
               Books
               <input
-                type="checkbox"
+                type='checkbox'
                 value={inputSwitch}
                 onChange={(e) => {
                   onBookSwitchToggle(e);
                 }}
               />
-              <span className="lever purple lighten-3"></span>
+              <span className='lever purple lighten-3'></span>
               Articles
             </label>
           </div>
-          <div className="input-field search-box">
+          <div className='input-field search-box'>
             <input
               value={searchKeyword}
               onChange={(e) => {
                 onSearchChange(e);
               }}
-              id="search"
-              type="text"
+              id='search'
+              type='text'
               required
             />
-            <button type="submit" className="btn small purple">
+            <button type='submit' className='btn small purple'>
               Search
             </button>
           </div>
-          <div className="book-radio">
+          <div className='book-radio'>
             <p>
               <label>
                 <input
                   value={inputSwitch === "off" ? "searchTitle" : "searchNews"}
-                  name="group1"
-                  type="radio"
+                  name='group1'
+                  id='group1'
+                  type='radio'
                   // checked
                 />
-                <span id="radio-text1">
+                <span id='radio-text1'>
                   {inputSwitch === "off"
                     ? "Search by Title"
                     : "Search News Articles"}
@@ -151,11 +152,12 @@ export const BookSearch = () => {
                   value={
                     inputSwitch === "off" ? "searchAuthor" : "searchResearch"
                   }
-                  name="group2"
+                  name='group1'
+                  id='group2'
                   // checked
-                  type="radio"
+                  type='radio'
                 />
-                <span id="radio-text2">
+                <span id='radio-text2'>
                   {inputSwitch === "off"
                     ? "Search by Author"
                     : "Search Research Articles"}

@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 import CollectionsContext from "../context/Collections/CollectionsContext";
 import ResearchArticles from "./Articles/researchArticles/ResearchArticles";
+import NewsArticlesResults from "./Articles/newsArticles/NewsArticlesResults";
 import Spinner from "../Components/Spinner";
 
 const Collections = () => {
@@ -10,6 +11,8 @@ const Collections = () => {
   const {
     getSavedResearchArticles,
     savedResearchArticles,
+    getSavedNewsArticles,
+    savedNewsArticles,
     loading,
   } = collectionsContext;
   useEffect(() => {
@@ -20,8 +23,12 @@ const Collections = () => {
   useEffect(() => {
     getSavedResearchArticles();
   }, []);
+  useEffect(() => {
+    getSavedNewsArticles();
+  }, []);
 
   console.log(savedResearchArticles);
+  console.log(savedNewsArticles);
   return (
     <div>
       <h5>My Collection</h5>
@@ -45,7 +52,10 @@ const Collections = () => {
           Book List
         </div>
         <div id='test2' className='col s12'>
-          Saved News Articles
+          {loading && <Spinner />}
+          {!loading && savedNewsArticles && (
+            <NewsArticlesResults type='saved' />
+          )}
         </div>
         <div id='test3' className='col s12'>
           {loading && <Spinner />}

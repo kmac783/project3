@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaControlCard({ item, id }) {
+export default function NewsArticlesItem({ item, id, type }) {
   const classes = useStyles();
   const theme = useTheme();
   let date = new Date(item.publishedAt);
@@ -52,7 +52,15 @@ export default function MediaControlCard({ item, id }) {
             <div class='news-heading'>
               {" "}
               <a href={item.url}>{item.title}</a>
-              <CollectionButton type={"News Articles"} article={item} id={id} />
+              {type === "all" ? (
+                <CollectionButton
+                  article={item}
+                  id={id}
+                  type={"News Articles"}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </Typography>
 

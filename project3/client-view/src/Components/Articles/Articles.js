@@ -9,7 +9,7 @@ const Articles = () => {
 
   return (
     <div>
-      {searchType === "searchNews" && <NewsArticles />}
+      {searchType === "searchNews" && <NewsArticles type={"all"} />}
       {searchType === "searchResearch" && <ResearchArticles type={"all"} />}
     </div>
   );

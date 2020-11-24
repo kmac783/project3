@@ -11,7 +11,7 @@ export default function SimpleMenu(props) {
   const collectionsContext = useContext(CollectionsContext);
 
   const { isAuthenticated } = authContext;
-  const { addResearchArticle } = collectionsContext;
+  const { addResearchArticle, addNewsArticle, addBook } = collectionsContext;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   var toastHTML = `<span>You must be logged in to save</span>`;
@@ -32,14 +32,17 @@ export default function SimpleMenu(props) {
     article: props.article,
   };
 
+  const bookToSave = props.book && { bookItem: props.book };
   const saveTo = () => {
     setAnchorEl(null);
     if (props.type === "Research Articles") {
       addResearchArticle(articleToSave);
     } else if (props.type === "News Articles") {
-      console.log("saved news");
+      // console.log(articleToSave);
+      addNewsArticle(articleToSave);
     } else if (props.type === "Books") {
-      console.log("saved books");
+      console.log(bookToSave);
+      //addBook(bookToSave.book);
     }
 
     if (
@@ -59,6 +62,7 @@ export default function SimpleMenu(props) {
         aria-controls='simple-menu'
         aria-haspopup='true'
         onClick={handleClick}
+        id='open'
       >
         <a class='btn-floating btn-small waves-effect waves-light grey'>
           <i class='material-icons'>add</i>

@@ -3,7 +3,6 @@ import VideosContext from "../../context/videos/VideosContext";
 
 const VideoItem = (props) => {
   const videosContext = useContext(VideosContext);
-  const { videos, getVideos } = videosContext;
   return (
     <div>
       <iframe
