@@ -92,7 +92,7 @@ export default function MediaControlCard({ bookItem, id, bookId }) {
               <div>
                 {" "}
                 <i
-                  class='material-icons touch-click prefix'
+                  class='material-icons right  touch-click'
                   onClick={() => {
                     deleteSavedBook(bookId);
                   }}

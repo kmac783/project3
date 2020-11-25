@@ -60,14 +60,16 @@ export default function NewsArticlesItem({ item, id, type, articleId }) {
               {" "}
               <a href={item.url}>{item.title}</a>
               {type === "all" ? (
-                <CollectionButton
-                  article={item}
-                  id={id}
-                  type={"News Articles"}
-                />
+                <div id='card-icon'>
+                  <CollectionButton
+                    article={item}
+                    id={id}
+                    type={"News Articles"}
+                  />
+                </div>
               ) : (
                 <i
-                  class='material-icons touch-click prefix'
+                  class='material-icons right touch-click'
                   onClick={() => {
                     deleteSavedNewsArticle(articleId);
                   }}
