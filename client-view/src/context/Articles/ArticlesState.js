@@ -22,7 +22,7 @@ const ArticlesState = (props) => {
 
   // Get Articles
   const getNewsArticles = async (query) => {
-    const url = `https://gnews.io/api/v4/search?q=${query}&lang=en&token=${process.env.REACT_APP_NEWS_API_KEY}`;
+    const url = `https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/search?q=${query}&lang=en&token=${process.env.REACT_APP_NEWS_API_KEY}`;
     try {
       const res = await axios.get(url);
       dispatch({
@@ -42,7 +42,7 @@ const ArticlesState = (props) => {
   };
 
   const getResearchArticles = async (query) => {
-    const url = `https://core.ac.uk:443/api-v2/articles/search/${query}?page=1&pageSize=50&metadata=true&fulltext=true&citations=true&similar=false&duplicate=false&urls=true&faithfulMetadata=false&apiKey=${process.env.REACT_APP_RESEARCH_API_KEY}`;
+    const url = `https://cors-anywhere.herokuapp.com/https://core.ac.uk:443/api-v2/articles/search/${query}?page=1&pageSize=50&metadata=true&fulltext=true&citations=true&similar=false&duplicate=false&urls=true&faithfulMetadata=false&apiKey=${process.env.REACT_APP_RESEARCH_API_KEY}`;
     try {
       const res = await axios.get(url);
       //let articles = res.data.data;

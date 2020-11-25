@@ -18,7 +18,7 @@ const BooksState = (props) => {
 
   // Get Books
   const getBooksByTitle = async (title) => {
-    const url = `https://www.goodreads.com/search/index.xml?q=${title}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=title`;
+    const url = `https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${title}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=title`;
     try {
       const res = await axios.get(url);
       //   let result = JSON.parse(
@@ -38,7 +38,7 @@ const BooksState = (props) => {
   };
 
   const getBooksByAuthor = async (author) => {
-    const url = `https://www.goodreads.com/search/index.xml?q=${author}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=author`;
+    const url = `https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${author}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=author`;
     try {
       const res = await axios.get(url);
       //   let result = JSON.parse(
