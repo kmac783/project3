@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -16,6 +16,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import CollectionButton from "./CollectionButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import CollectionsContext from "../../../context/Collections/CollectionsContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,17 +41,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ResearchItem = ({ article, id, type }) => {
+const ResearchItem = ({ article, id, type, articleId }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   let description = article.description.match(/[^\s.!?]+[^.!?\r\n]+[.!?]*/g);
-  let descriptionHidden = description.slice(3);
+  const collectionsContext = useContext(CollectionsContext);
+  const { deleteSavedResearchArticle } = collectionsContext;
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id='saved-card'>
       <CardHeader
         avatar={
           <Avatar aria-label='recipe' className={classes.avatar}>
@@ -65,7 +67,14 @@ const ResearchItem = ({ article, id, type }) => {
               type={"Research Articles"}
             />
           ) : (
-            ""
+            <i
+              class='material-icons touch-click prefix'
+              onClick={() => {
+                deleteSavedResearchArticle(articleId);
+              }}
+            >
+              delete
+            </i>
           )
         }
         title={

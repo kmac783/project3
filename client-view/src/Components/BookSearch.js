@@ -7,6 +7,8 @@ import Spinner from "./Spinner";
 import Articles from "./Articles/Articles";
 import Books from "./Books/Books";
 import AlertContext from "../context/Alert/AlertContext";
+import CollectionsContext from "../context/Collections/CollectionsContext";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
@@ -14,7 +16,14 @@ export const BookSearch = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const videosContext = useContext(VideosContext);
   const alertContext = useContext(AlertContext);
+  const collectionsContext = useContext(CollectionsContext);
 
+  const {
+    newsArticleSaveError,
+    researchArticleSaveError,
+    bookSaveError,
+    clearErrors,
+  } = collectionsContext;
   const booksContext = useContext(BooksContext);
   const authContext = useContext(AuthContext);
   const articlesContext = useContext(ArticlesContext);
@@ -39,6 +48,27 @@ export const BookSearch = () => {
   useEffect(() => {
     loadUser();
   }, []);
+
+  useEffect(() => {
+    if (bookSaveError) {
+      M.toast({ html: bookSaveError });
+      clearErrors();
+    }
+  }, [bookSaveError]);
+
+  useEffect(() => {
+    if (newsArticleSaveError) {
+      M.toast({ html: newsArticleSaveError });
+      clearErrors();
+    }
+  }, [newsArticleSaveError]);
+
+  useEffect(() => {
+    if (researchArticleSaveError) {
+      M.toast({ html: researchArticleSaveError });
+      clearErrors();
+    }
+  }, [researchArticleSaveError]);
 
   const onSearchChange = (e) => {
     e.preventDefault();

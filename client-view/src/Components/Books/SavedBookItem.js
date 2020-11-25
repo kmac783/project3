@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,14 +8,13 @@ import CollectionButton from "../Articles/researchArticles/CollectionButton";
 import IconButton from "@material-ui/core/IconButton";
 import clsx from "clsx";
 import Spinner from "../Spinner";
+import CollectionsContext from "../../context/Collections/CollectionsContext";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import BookItem from "./BookRating";
 import Collapse from "@material-ui/core/Collapse";
 
 import BookRating from "./BookRating";
-import getDescription from "./GetDescription";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,46 +53,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaControlCard({ dataItem, id }) {
+export default function MediaControlCard({ bookItem, id, bookId }) {
   const classes = useStyles();
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
 
+  const collectionsContext = useContext(CollectionsContext);
+  const { deleteSavedBook } = collectionsContext;
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const [bookDescription, setBookDescription] = useState("");
-
-  useEffect(() => {
-    getDescription(dataItem.items.id).then((res) => {
-      setSearchLoading(true);
-      setBookDescription(res);
-      setSearchLoading(false);
-    });
-  }, []);
-
-  let bookData = {
-    items: dataItem.items,
-  };
-
-  let details =
-    typeof bookDescription === "undefined"
-      ? bookDescription
-      : bookDescription.replace(/(<([^>]+)>)/gi, "");
-
-  bookData.items.details = details;
-
-  //   let date = new Date(item.publishedAt);
-  //   let year = date.getFullYear().toString();
-  //   let month = date.getMonth().toString();
-  //   let day = date.getDay().toString();
 
   return (
     <Card className={classes.root}>
       <CardMedia
         className={`${classes.cover}`}
-        image={dataItem.items.image[0]}
+        image={bookItem.image[0]}
         title='Live from space album cover'
         id='img-book'
       />
@@ -106,15 +83,22 @@ export default function MediaControlCard({ dataItem, id }) {
           >
             <div class='news-heading'>
               {" "}
-              <div id='title-book-heading'>
-                {dataItem.items.title[0]}
+              <div id='title-book-saved-heading'>
+                {bookItem.title[0]}
                 <Typography variant='subtitle2' color='textSecondary'>
-                  {dataItem.items.author[0]}
+                  {bookItem.author[0]}
                 </Typography>
               </div>
-              <div id='add-button'>
+              <div>
                 {" "}
-                <CollectionButton type={"Books"} book={bookData} id={id} />
+                <i
+                  class='material-icons touch-click prefix'
+                  onClick={() => {
+                    deleteSavedBook(bookId);
+                  }}
+                >
+                  delete
+                </i>
               </div>
             </div>
           </Typography>
@@ -129,8 +113,8 @@ export default function MediaControlCard({ dataItem, id }) {
               color='Primary'
             >
               <BookRating
-                rating={dataItem.items.average_rating}
-                count={dataItem.items.count}
+                rating={bookItem.average_rating}
+                count={bookItem.count}
               />
             </Typography>
             <Typography variant='subtitle2' color='textSecondary'>
@@ -138,7 +122,7 @@ export default function MediaControlCard({ dataItem, id }) {
                 href='#'
                 onClick={() =>
                   window.open(
-                    `https://www.goodreads.com/buy_buttons/12/follow?book_id=${dataItem.items.id}`
+                    `https://www.goodreads.com/buy_buttons/12/follow?book_id=${bookItem.id}`
                   )
                 }
               >
@@ -149,7 +133,7 @@ export default function MediaControlCard({ dataItem, id }) {
                 href='#'
                 onClick={() =>
                   window.open(
-                    `https://www.goodreads.com/book/show/${dataItem.items.id}`
+                    `https://www.goodreads.com/book/show/${bookItem.id}`
                   )
                 }
               >
@@ -176,7 +160,7 @@ export default function MediaControlCard({ dataItem, id }) {
                 color='textSecondary'
                 id='book-details'
               >
-                {!searchLoading && <p>{details}</p>}
+                {bookItem.details}
               </Typography>
             </CardContent>
           </Collapse>

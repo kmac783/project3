@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import CollectionButton from "../researchArticles/CollectionButton";
+import CollectionsContext from "../../../context/Collections/CollectionsContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewsArticlesItem({ item, id, type }) {
+export default function NewsArticlesItem({ item, id, type, articleId }) {
+  const collectionsContext = useContext(CollectionsContext);
+  const { deleteSavedNewsArticle } = collectionsContext;
   const classes = useStyles();
   const theme = useTheme();
   let date = new Date(item.publishedAt);
@@ -48,7 +51,11 @@ export default function NewsArticlesItem({ item, id, type }) {
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component='subtitle1' variant='subtitle1' color='Primary'>
+          <Typography
+            component='subtitle1'
+            variant='subtitle1'
+            color='textPrimary'
+          >
             <div class='news-heading'>
               {" "}
               <a href={item.url}>{item.title}</a>
@@ -59,7 +66,14 @@ export default function NewsArticlesItem({ item, id, type }) {
                   type={"News Articles"}
                 />
               ) : (
-                ""
+                <i
+                  class='material-icons touch-click prefix'
+                  onClick={() => {
+                    deleteSavedNewsArticle(articleId);
+                  }}
+                >
+                  delete
+                </i>
               )}
             </div>
           </Typography>

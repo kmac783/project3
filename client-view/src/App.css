@@ -185,6 +185,14 @@ nav {
 #open:focus {
   background-color: transparent;
 }
+
+#title-book-heading{
+  width:480px;
+}
+
+#title-book-saved-heading {
+  width: 610px;
+}
 #img-book {
   background-size: contain;
   background-position: left;
@@ -196,10 +204,11 @@ nav {
 .reseach-articlesResult,
 .news-articles {
   margin-right: 40px;
-  width: 80%;
+  width: 90%;
 }
-.test1 {
-  background-color: white;
+
+#saved-card {
+  max-width: 945px;
 }
 
 .tabs {
@@ -207,6 +216,10 @@ nav {
   margin-top: 3rem;
 }
 
+
+.touch-click{
+  cursor: pointer;
+}
 #login {
   margin-bottom: 2rem;
   border: 1px solid rgb(197, 194, 194);

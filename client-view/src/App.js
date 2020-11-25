@@ -8,7 +8,7 @@ import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/Alert/AlertState";
 import CollectionsState from "./context/Collections/CollectionsState";
 import VideosState from "./context/videos/VideosState";
-import Collections from "./Components/Collections";
+import Collections from "./Components/Collections/Collections";
 import Navbar from "./Components/Navbar";
 import BookSearch from "./Components/BookSearch";
 import Login from "../src/Components/Auth/Login";
@@ -16,6 +16,7 @@ import Register from "../src/Components/Auth/Register";
 import setToken from "./utils/setToken";
 import Alerts from "./Components/Alerts/alerts";
 import About from "./Components/About";
+import PrivateRoute from "./Components/Routing/PrivateRoute";
 import "./App.css";
 
 if (localStorage.token) {
@@ -31,18 +32,18 @@ function App() {
               <ArticlesState>
                 <Router>
                   <Navbar />
-                  <div className="container-fluid">
+                  <div className='container-fluid'>
                     <Alerts />
                     <Switch>
-                      <Route exact path="/" component={BookSearch} />
-                      <Route
+                      <Route exact path='/' component={BookSearch} />
+                      <PrivateRoute
                         exact
-                        path="/collections"
+                        path='/collections'
                         component={Collections}
                       />
-                      <Route exact path="/login" component={Login} />
-                      <Route exact path="/register" component={Register} />
-                      <Route exact path="/about" component={About} />
+                      <Route exact path='/login' component={Login} />
+                      <Route exact path='/register' component={Register} />
+                      <Route exact path='/about' component={About} />
                     </Switch>
                   </div>
                 </Router>
