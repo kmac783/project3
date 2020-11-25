@@ -51,6 +51,7 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
 .logo {
   display: flex;
 }
@@ -72,8 +73,26 @@ nav {
   color: white;
 }
 
+.about-header {
+  padding: 0px 5px 0px 20px;
+}
+.about-container {
+  padding: 0px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  display: flex;
+}
+.about-main {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding-right: 30px;
+}
+.about-sections {
+  display: flex;
+  margin-top: -50px;
+}
 .App-link {
-  color: #61dafb;
+  color: #9c27b0;
 }
 
 .search-box {

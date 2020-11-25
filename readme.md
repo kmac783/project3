@@ -183,6 +183,11 @@ export default App;
 
 ## Challenges
 
+- Refactoring to separate the front end and back ends
+- Not running out of API calls
+- Refactoring the GoodReads API call from XML to JSON
+-
+
 ### Authentication
 
 - When a user attempts to log in, our login function is called. It is a global function from auth context.
@@ -220,7 +225,11 @@ const [state, dispatch] = useReducer(AuthReducer, initialState);
 
 - Paid subscription that allows research articles to be returned by subscription scholarly article services
 - Ability to publish collections for other users to explore
-- Greater personalization of profile -- avatar, email address, content preferences, etc...
+- Greater personalization of profile -- avatar, email address, content preferences, etc.
+- Creating your own Collection Types
+- Optimizing for Mobile
+
+..
 
 ##Credits
 [Love Nosa-Omorogiuwa](https://github.com/lnosaomok)
