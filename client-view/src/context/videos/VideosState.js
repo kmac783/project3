@@ -15,7 +15,7 @@ const VideosState = (props) => {
 
   // Get Books
   const getVideos = async (query) => {
-    const url = `https://cors-anywhere.herokuapp.com/https://youtube.googleapis.com/youtube/v3/search?q=${query}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
+    const url = `https://youtube.googleapis.com/youtube/v3/search?q=${query}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
     try {
       const res = await axios.get(url);
 
