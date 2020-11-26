@@ -1,4 +1,0 @@
-{
-    "jwtSecret": "funminions",
-    "mongoURI": "mongodb+srv://lnosaomobu:findme123@cluster0.6obst.mongodb.net/findme?retryWrites=true&w=majority"
-}
