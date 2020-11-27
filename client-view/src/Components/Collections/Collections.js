@@ -44,9 +44,6 @@ const Collections = () => {
     getSavedBooks();
   }, []);
 
-  console.log(savedResearchArticles);
-  console.log(savedNewsArticles);
-  console.log(savedBooks);
   return (
     <div>
       <div className='row container'>

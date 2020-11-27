@@ -7,13 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import CollectionButton from "../Articles/researchArticles/CollectionButton";
 import IconButton from "@material-ui/core/IconButton";
 import clsx from "clsx";
-import Spinner from "../Spinner";
-
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
-import BookItem from "./BookRating";
 import Collapse from "@material-ui/core/Collapse";
-
 import BookRating from "./BookRating";
 import getDescription from "./GetDescription";
 
@@ -83,11 +78,6 @@ export default function MediaControlCard({ dataItem, id }) {
       : bookDescription.replace(/(<([^>]+)>)/gi, "");
 
   bookData.items.details = details;
-
-  //   let date = new Date(item.publishedAt);
-  //   let year = date.getFullYear().toString();
-  //   let month = date.getMonth().toString();
-  //   let day = date.getDay().toString();
 
   return (
     <Card className={classes.root}>

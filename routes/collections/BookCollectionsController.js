@@ -1,5 +1,4 @@
 const express = require("express");
-
 const router = express.Router();
 const auth = require("../../middleware/auth");
 
@@ -10,7 +9,6 @@ router.get("/", auth, async (req, res) => {
     let books = await Book.find({
       user: req.user.id,
     }).sort({ $natural: -1 });
-    // console.log(books);
     res.json(books);
   } catch (err) {
     console.error(err.message);

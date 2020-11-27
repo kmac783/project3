@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import CollectionsContext from "../../../context/Collections/CollectionsContext";
-
 import NewsArticlesItem from "./NewsArticlesItem";
 
 function SavedNewsArticlesResults(props) {

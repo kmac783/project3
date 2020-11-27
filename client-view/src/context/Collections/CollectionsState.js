@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer } from "react";
 import CollectionsContext from "./CollectionsContext";
 import CollectionsReducer from "./CollectionsReducer";
 import axios from "axios";
@@ -6,20 +6,16 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 import {
   ADD_RESEARCH_ARTICLE,
-  REMOVE_RESEARCH_ARTICLE,
-  SAVE_ERROR,
   RESEARCH_ARTICLES_ERROR,
   GET_SAVED_RESEARCH_ARTICLES,
   ADD_NEWS_ARTICLE,
   GET_SAVED_NEWS_ARTICLES,
   NEWS_ARTICLES_ERROR,
-  REMOVE_NEWS_ARTICLE,
   ADD_BOOKS,
   GET_SAVED_BOOKS,
   SAVE_BOOKS_ERROR,
   SAVE_NEWS_ERROR,
   SAVE_RESEARCH_ERROR,
-  REMOVE_BOOK,
   CLEAR_ERRORS,
   DELETE_ERROR,
   FILTER_SAVED_BOOKS,

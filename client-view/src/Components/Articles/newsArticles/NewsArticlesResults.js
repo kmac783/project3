@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import ArticlesContext from "../../../context//Articles/ArticlesContext";
-
 import Videos from "../../Videos/Videos";
 import NewsArticlesItem from "./NewsArticlesItem";
 function NewsArticlesResults(props) {

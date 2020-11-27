@@ -5,7 +5,6 @@ import BookItem from "./BookItem";
 function TitleResults() {
   const booksContext = useContext(BooksContext);
   const { title_search } = booksContext;
-  console.log(title_search);
   return (
     <div>
       <p>Search Results</p>

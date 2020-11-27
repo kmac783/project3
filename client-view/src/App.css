@@ -168,6 +168,11 @@ nav {
   justify-content: space-between;
 }
 
+.tab>a.active {
+  
+  background-color: #b32fca;
+}
+
 
 .video-articles {
   display: flex;

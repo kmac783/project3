@@ -1,10 +1,4 @@
-import {
-  BOOKS_ERROR,
-  GET_ARTICLES,
-  GET_BOOKS_BY_AUTHOR,
-  GET_BOOKS_BY_TITLE,
-  GET_VIDEOS,
-} from "../types";
+import { GET_BOOKS_BY_AUTHOR, GET_BOOKS_BY_TITLE } from "../types";
 
 export default (state, action) => {
   switch (action.type) {

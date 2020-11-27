@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect } from "react";
 import CollectionsContext from "../../context/Collections/CollectionsContext";
+
 const ResearchArticlesFilter = () => {
   const searchRef = useRef("");
   const collectionsContext = useContext(CollectionsContext);

@@ -5,7 +5,7 @@ import ResearchItem from "./ResearchItem";
 const ResearchArticles = (props) => {
   const articlesContext = useContext(ArticlesContext);
 
-  const { researchArticles, getResearchArticles } = articlesContext;
+  const { researchArticles } = articlesContext;
 
   let filteredArticles =
     researchArticles !== null

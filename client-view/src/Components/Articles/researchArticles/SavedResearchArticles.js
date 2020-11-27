@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ArticlesContext from "../../../context/Articles/ArticlesContext";
 import CollectionsContext from "../../../context/Collections/CollectionsContext";
 import ResearchItem from "./ResearchItem";
 const SavedResearchArticles = (props) => {

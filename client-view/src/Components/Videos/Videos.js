@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import VideosContext from "../../context/videos/VideosContext";
 import VideoItem from "./VideoItem";
+
 const Videos = () => {
   const videosContext = useContext(VideosContext);
-  const { videos, getVideos } = videosContext;
-  const displayVideos = {};
+  const { videos } = videosContext;
 
   return videos ? (
     videos.map((video, index) => {

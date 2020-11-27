@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import ArticlesContext from "./ArticlesContext";
 import ArticlesReducer from "./ArticlesReducer";

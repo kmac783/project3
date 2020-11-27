@@ -5,19 +5,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import M from "materialize-css/dist/js/materialize.min.js";
 import AuthContext from "../../../context/Auth/AuthContext";
 import CollectionsContext from "../../../context/Collections/CollectionsContext";
-import { useEffect } from "react";
 
 export default function CollectionButton(props) {
   const authContext = useContext(AuthContext);
   const collectionsContext = useContext(CollectionsContext);
 
   const { isAuthenticated } = authContext;
-  const {
-    addResearchArticle,
-    addNewsArticle,
-    addBook,
-    error,
-  } = collectionsContext;
+  const { addResearchArticle, addNewsArticle, addBook } = collectionsContext;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   var toastHTML = `<span>You must be logged in to save</span>`;
@@ -44,10 +38,8 @@ export default function CollectionButton(props) {
     if (props.type === "Research Articles") {
       addResearchArticle(articleToSave);
     } else if (props.type === "News Articles") {
-      // console.log(articleToSave);
       addNewsArticle(articleToSave);
     } else if (props.type === "Books") {
-      //console.log(bookToSave.bookItem.items);
       addBook(bookToSave.bookItem);
     }
   };
