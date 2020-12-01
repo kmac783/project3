@@ -1,4 +1,4 @@
-import { VIDEOS_ERROR, GET_VIDEOS } from "../types";
+import { GET_VIDEOS } from "../types";
 
 export default (state, action) => {
   switch (action.type) {

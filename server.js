@@ -1,15 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const db = mongoose.connection;
-const config = require("config");
-const dbURI = config.get("mongoURI");
 const app = express();
 const path = require("path");
-
+require("dotenv").config();
 //Connect Database
 
 // Connect to Mongo
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -17,7 +15,9 @@ mongoose.connect(dbURI, {
 });
 // Error / success
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
-db.on("connected", () => console.log("mongo connected: ", dbURI));
+db.on("connected", () =>
+  console.log("mongo connected: ", process.env.mongoURI)
+);
 db.on("disconnected", () => console.log("mongo disconnected"));
 // open the connection to mongo
 db.on("open", () => {});

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import BooksContext from "../context/Books/BooksContext";
 import ArticlesContext from "../context/Articles/ArticlesContext";
 import AuthContext from "../context/Auth/AuthContext";
@@ -7,6 +7,8 @@ import Spinner from "./Spinner";
 import Articles from "./Articles/Articles";
 import Books from "./Books/Books";
 import AlertContext from "../context/Alert/AlertContext";
+import CollectionsContext from "../context/Collections/CollectionsContext";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 export const BookSearch = () => {
   const [inputSwitch, setInputSwitch] = useState("off"); //on is articles
@@ -14,31 +16,51 @@ export const BookSearch = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const videosContext = useContext(VideosContext);
   const alertContext = useContext(AlertContext);
+  const collectionsContext = useContext(CollectionsContext);
 
+  const {
+    newsArticleSaveError,
+    researchArticleSaveError,
+    bookSaveError,
+    clearErrors,
+  } = collectionsContext;
   const booksContext = useContext(BooksContext);
   const authContext = useContext(AuthContext);
   const articlesContext = useContext(ArticlesContext);
-  const { videos, getVideos } = videosContext;
+  const { getVideos } = videosContext;
   const { setAlert } = alertContext;
-  const { isAuthenticated, loadUser } = authContext;
-  const {
-    title_search,
-    getBooksByTitle,
-    getBooksByAuthor,
-    author_search,
-  } = booksContext;
+  const { loadUser } = authContext;
+  const { getBooksByTitle, getBooksByAuthor } = booksContext;
   const {
     getResearchArticles,
-    newsArticles,
     getNewsArticles,
-    researchArticles,
     setSearchType,
-    searchType,
   } = articlesContext;
 
   useEffect(() => {
     loadUser();
   }, []);
+
+  useEffect(() => {
+    if (bookSaveError) {
+      M.toast({ html: bookSaveError });
+      clearErrors();
+    }
+  }, [bookSaveError]);
+
+  useEffect(() => {
+    if (newsArticleSaveError) {
+      M.toast({ html: newsArticleSaveError });
+      clearErrors();
+    }
+  }, [newsArticleSaveError]);
+
+  useEffect(() => {
+    if (researchArticleSaveError) {
+      M.toast({ html: researchArticleSaveError });
+      clearErrors();
+    }
+  }, [researchArticleSaveError]);
 
   const onSearchChange = (e) => {
     e.preventDefault();
@@ -84,10 +106,8 @@ export const BookSearch = () => {
         }
       }
     }
-
-    //  setSearchLoading(false);
   };
-  console.log(videos);
+
   const onBookSwitchToggle = (e) => {
     e.target.value === "off" ? setInputSwitch("on") : setInputSwitch("off");
   };
@@ -137,7 +157,6 @@ export const BookSearch = () => {
                   name='group1'
                   id='group1'
                   type='radio'
-                  // checked
                 />
                 <span id='radio-text1'>
                   {inputSwitch === "off"
@@ -154,7 +173,6 @@ export const BookSearch = () => {
                   }
                   name='group1'
                   id='group2'
-                  // checked
                   type='radio'
                 />
                 <span id='radio-text2'>
@@ -169,55 +187,9 @@ export const BookSearch = () => {
       </div>
       <div>
         {searchLoading && <Spinner />}
-
-        {/* {!searchLoading && researchArticles && <ResearchArticles type='all' />} */}
         {!searchLoading && <Articles />}
-        {/* {!searchLoading && videos && <Videos />} */}
         {!searchLoading && <Books />}
       </div>
-      {/* <div>{<TitleResults />}</div>
-      <div>{<AuthorResults />}</div> */}
-      {/* <div>
-        <p>Search Page</p>
-        {title_search ? (
-          title_search.map((item) => {
-            console.log(item.best_book);
-            return (
-              //TODO: Should we default to one radio button checked or make an error for if user runs search without a radio button checked?
-              <div>
-                <p>
-                  Title: {item.best_book[0].title}
-                  Author: {item.best_book[0].author[0].name}
-                  <img src={item.best_book[0].image_url} />
-                </p>
-              </div>
-            );
-          })
-        ) : (
-          <p>No Books</p>
-        )}
-      </div> */}
-
-      {/* <div>
-        <p>Search Page</p>
-        {title_search ? (
-          title_search.map((item) => {
-            console.log(item.best_book);
-            return (
-              //TODO: Should we default to one radio button checked or make an error for if user runs search without a radio button checked?
-              <div>
-                <p>
-                  Title: {item.best_book[0].title}
-                  Author: {item.best_book[0].author[0].name}
-                  <img src={item.best_book[0].image_url} />
-                </p>
-              </div>
-            );
-          })
-        ) : (
-          <p>No Books</p>
-        )}
-      </div> */}
     </div>
   );
 };

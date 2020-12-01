@@ -1,7 +1,6 @@
 import {
   GET_NEWS_ARTICLES,
   GET_RESEARCH_ARTICLES,
-  ARTICLES_ERROR,
   SET_SEARCH_TYPE,
 } from "../types";
 

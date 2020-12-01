@@ -1,20 +1,12 @@
 import React, { useContext } from "react";
 import ArticlesContext from "../../../context/Articles/ArticlesContext";
-import CollectionsContext from "../../../context/Collections/CollectionsContext";
 import Videos from "../../Videos/Videos";
 import ResearchItem from "./ResearchItem";
 const ResearchArticles = (props) => {
   const articlesContext = useContext(ArticlesContext);
 
-  const { researchArticles, getResearchArticles } = articlesContext;
+  const { researchArticles } = articlesContext;
 
-  const collectionsContext = useContext(CollectionsContext);
-
-  const {
-    getSavedResearchArticles,
-    savedResearchArticles,
-    loading,
-  } = collectionsContext;
   let filteredArticles =
     researchArticles !== null
       ? researchArticles.filter((article) => {
@@ -37,33 +29,15 @@ const ResearchArticles = (props) => {
     <p>No Articles</p>
   );
 
-  const displaySaved = savedResearchArticles ? (
-    savedResearchArticles.map((article, index) => {
-      return (
-        <ResearchItem
-          article={article.researchArticle}
-          id={index}
-          type={props.type}
-        />
-      );
-    })
-  ) : (
-    <p>No Saved Articles</p>
-  );
-
   return (
     <div>
-      {props.type === "all" ? (
-        <div class='all-researchArticles'>
-          <div className='reseach-articlesResult'>{displayAll}</div>
-          <div className='relatedVideos'>
-            <h6>Videos related to this search</h6>
-            {researchArticles && <Videos />}
-          </div>
+      <div class='all-researchArticles'>
+        <div className='reseach-articlesResult'>{displayAll}</div>
+        <div className='relatedVideos'>
+          <h6>Videos related to this search</h6>
+          {researchArticles && <Videos />}
         </div>
-      ) : (
-        displaySaved
-      )}
+      </div>
     </div>
   );
 };

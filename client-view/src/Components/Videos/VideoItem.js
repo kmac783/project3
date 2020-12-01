@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import VideosContext from "../../context/videos/VideosContext";
+import React from "react";
 
 const VideoItem = (props) => {
-  const videosContext = useContext(VideosContext);
   return (
     <div>
       <iframe

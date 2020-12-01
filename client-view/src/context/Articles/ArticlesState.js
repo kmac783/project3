@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import ArticlesContext from "./ArticlesContext";
 import ArticlesReducer from "./ArticlesReducer";
@@ -22,7 +22,7 @@ const ArticlesState = (props) => {
 
   // Get Articles
   const getNewsArticles = async (query) => {
-    const url = `https://gnews.io/api/v4/search?q=${query}&lang=en&token=${process.env.REACT_APP_NEWS_API_KEY}`;
+    const url = `https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/search?q=${query}&lang=en&token=${process.env.REACT_APP_NEWS_API_KEY}`;
     try {
       const res = await axios.get(url);
       dispatch({

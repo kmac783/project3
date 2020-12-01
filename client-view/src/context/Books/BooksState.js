@@ -1,6 +1,5 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
-import convert, { xml2js } from "xml-js";
 import BooksContext from "./BooksContext";
 import BooksReducer from "./BooksReducer";
 
@@ -21,17 +20,12 @@ const BooksState = (props) => {
     const url = `https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${title}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=title`;
     try {
       const res = await axios.get(url);
-      //   let result = JSON.parse(
-      //     convert.xml2json(res.data, { compact: true, spaces: 4 })
-      //   );
       parseString(res.data, function (err, result) {
         dispatch({
           type: GET_BOOKS_BY_TITLE,
           payload: result.GoodreadsResponse.search[0].results[0].work,
         });
       });
-
-      // console.log("result", result);
     } catch (err) {
       dispatch({ type: BOOKS_ERROR });
     }
@@ -41,17 +35,12 @@ const BooksState = (props) => {
     const url = `https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${author}&key=${process.env.REACT_APP_GOODREADS_API_KEY}&search=author`;
     try {
       const res = await axios.get(url);
-      //   let result = JSON.parse(
-      //     convert.xml2json(res.data, { compact: true, spaces: 4 })
-      //   );
       parseString(res.data, function (err, result) {
         dispatch({
           type: GET_BOOKS_BY_AUTHOR,
           payload: result.GoodreadsResponse.search[0].results[0].work,
         });
       });
-
-      // console.log("result", result);
     } catch (err) {
       dispatch({ type: BOOKS_ERROR });
     }
