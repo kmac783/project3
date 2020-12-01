@@ -227,7 +227,7 @@ const [state, dispatch] = useReducer(AuthReducer, initialState);
 - Ability to publish collections for other users to explore
 - Greater personalization of profile -- avatar, email address, content preferences, etc.
 - Creating your own Collection Types
-- Optimizing for Mobile
+- Optimizing for Mobile Navigation
 
 ..
 
